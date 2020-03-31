@@ -3,7 +3,7 @@
 /public/assets/**/*
 /public/mix-manifest.json
 /public/storage
-/public/fonts/*
+/public/fonts/
 /storage/*.key
 /vendor
 .env
