@@ -1,31 +1,29 @@
-@extends('layouts.app', ['class' => 'bg-default'])
+@extends('layouts.app')
 
 @section('content')
-    @include('layouts.headers.guest')
+    <div class="container">
+        <div class="card border-0">
+            <div class="card-header border-0">
+                <h3 class="text-center txt-primary">
+                    @lang('auth.verify.email')
+                </h3>
+            </div>
 
-    <div class="container mt--8 pb-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-7">
-                <div class="card bg-secondary shadow border-0">
-                    <div class="card-body px-lg-5 py-lg-5">
-                        <div class="text-center text-muted mb-4">
-                            <small>{{ __('Verify Your Email Address') }}</small>
-                        </div>
-                        <div>
-                            @if (session('resent'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ __('A fresh verification link has been sent to your email address.') }}
-                                </div>
-                            @endif
-                            
-                            {{ __('Before proceeding, please check your email for a verification link.') }}
-                            
-                            @if (Route::has('verification.resend'))
-                                {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>
-                            @endif
-                        </div>
+            <div class="card-body text-center">
+                @if (session('resent'))
+                    <div class="alert alert-success" role="alert">
+                        @lang('auth.verify.resent')
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </div>
+                @endif
+
+                @lang('auth.verify.proceed')
+                @lang('auth.verify.not_received'),
+                <a href="{{ route('verification.resend') }}">
+                    @lang('auth.verify.click_here')
+                </a>.
             </div>
         </div>
     </div>

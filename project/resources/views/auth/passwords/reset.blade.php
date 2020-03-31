@@ -1,62 +1,82 @@
-@extends('layouts.app', ['class' => 'bg-default'])
+@extends('layouts.auth')
+@section('title', __('headings.auth.password_reset'))
 
 @section('content')
-    @include('layouts.headers.guest')
-    
-    <div class="container mt--8 pb-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-7">
-                <div class="card bg-secondary shadow border-0">
-                    <div class="card-body px-lg-5 py-lg-5">
-                        <div class="text-center text-muted mb-4">
-                            <small>{{ __('Reset Password') }}</small>
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h4>@lang('headings.auth.password_reset')</h4>
+    </div>
+
+    <div class="card-body">
+        <form method="POST" action="{{ route('password.change') }}" class="needs-validation" novalidate="">
+            @csrf
+
+            @if (session('status'))
+                <div class="alert alert-success mb-0">
+                    <i class="far fa-lightbulb fa-fw mr-1"></i>{{ session('status') }}
+                </div>
+            @else
+                <div class="form-group floating-addon">
+                    <label for="email">
+                        @lang('labels.common.email')
+                    </label>
+                    <div class="input-group {{ has_error_class('email') }}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-at"></i>
+                            </span>
                         </div>
-                        <form role="form" method="POST" action="{{ route('password.update') }}">
-                            @csrf
+                        <input type="email" name="email" tabindex="1" autofocus required
+                            class="form-control {{ has_error_class('email') }}"
+                            placeholder="@lang('placeholders.auth.email')"
+                            value="{{old('email', $user->email ?? '')}}">
+                    </div>
+                    @errorblock('email')
+                </div>
 
-                            <input type="hidden" name="token" value="{{ $token }}">
+                <div class="form-group floating-addon">
+                    <label for="password">
+                        @lang('labels.common.password')
+                    </label>
+                    <div class="input-group {{ has_error_class('password') }}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-asterisk"></i>
+                            </span>
+                        </div>
+                        <input type="password" name="password" autocomplete="new-password" tabindex="2" required
+                            class="form-control {{ has_error_class('password') }}"
+                            placeholder="@lang('placeholders.auth.password')">
+                    </div>
+                    @errorblock('password')
+                </div>
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                    </div>
-                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ $email ?? old('email') }}" required autofocus>
-                                </div>
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                    </div>
-                                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Password') }}" type="password" required>
-                                </div>
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                    </div>
-                                    <input class="form-control" placeholder="{{ __('Confirm Password') }}" type="password" name="password_confirmation" required>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary my-4">{{ __('Reset Password') }}</button>
-                            </div>
-                        </form>
+                <div class="form-group floating-addon">
+                    <label for="password_confirmation">
+                        @lang('labels.common.password_confirmation')
+                    </label>
+                    <div class="input-group {{ has_error_class('password_confirmation') }}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-asterisk"></i>
+                            </span>
+                        </div>
+                        <input type="password" name="password_confirmation" autocomplete="new-password" tabindex="2" required
+                            class="form-control {{ has_error_class('password') }}"
+                            placeholder="@lang('placeholders.users.password_confirmation')">
                     </div>
                 </div>
-            </div>
-        </div>
+
+                <div class="form-group mb-0">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="3">
+                        @lang('buttons.auth.redefine_password')
+                    </button>
+                </div>
+
+                <input type="hidden" name="token" value="{{ $token }}">
+            @endif
+        </form>
     </div>
+</div>
 @endsection
