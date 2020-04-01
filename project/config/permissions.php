@@ -21,5 +21,10 @@ return [
         'show client',
         'list client',
         'delete client',
+        'create voluntary',
+        'edit voluntary',
+        'show voluntary',
+        'list voluntary',
+        'delete voluntary',
     ],
 ];

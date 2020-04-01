@@ -17,15 +17,15 @@ class AdminUserResource extends Resource
             'links' => [
                 'edit' => $this->when(
                     $user->can('users edit admin'),
-                    route('admin.admin-users.edit', $this->id)
+                    route('admin.administradores.edit', $this->id)
                 ),
                 'show' => $this->when(
                     $user->can('users show admin'),
-                    route('admin.admin-users.show', $this->id)
+                    route('admin.administradores.show', $this->id)
                 ),
                 'destroy' => $this->when(
                     $user->can('users delete admin') && $this->id !== $user->id,
-                    route('admin.admin-users.destroy', $this->id)
+                    route('admin.administradores.destroy', $this->id)
                 ),
             ],
         ];

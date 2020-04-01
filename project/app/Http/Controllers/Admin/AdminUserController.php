@@ -41,7 +41,7 @@ class AdminUserController extends Controller
         $user->assignRole(UserRolesEnum::ADMIN);
 
         $message = _m('common.success.create');
-        return $this->chooseReturn('success', $message, 'admin.admin-users.edit', $user->id);
+        return $this->chooseReturn('success', $message, 'admin.administradores.edit', $user->id);
     }
 
     public function edit($id)
@@ -58,7 +58,7 @@ class AdminUserController extends Controller
         $this->repository->updateUser($user, $userData);
 
         $message = _m('common.success.update');
-        return $this->chooseReturn('success', $message, 'admin.admin-users.edit', $id);
+        return $this->chooseReturn('success', $message, 'admin.administradores.edit', $id);
     }
 
     public function show($id)

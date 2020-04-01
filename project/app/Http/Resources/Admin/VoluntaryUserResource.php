@@ -4,7 +4,7 @@ namespace App\Http\Resources\Admin;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class ClientUserResource extends Resource
+class VoluntaryUserResource extends Resource
 {
     public function toArray($request)
     {
@@ -16,16 +16,16 @@ class ClientUserResource extends Resource
             'created_at' => format_date($this->created_at),
             'links' => [
                 'edit' => $this->when(
-                    $user->can('users edit client'),
-                    route('admin.acolhidos.edit', $this->id)
+                    $user->can('users edit admin'),
+                    route('admin.voluntarios.edit', $this->id)
                 ),
                 'show' => $this->when(
-                    $user->can('users show client'),
-                    route('admin.acolhidos.show', $this->id)
+                    $user->can('users show admin'),
+                    route('admin.voluntarios.show', $this->id)
                 ),
                 'destroy' => $this->when(
-                    $user->can('users delete client'),
-                    route('admin.acolhidos.destroy', $this->id)
+                    $user->can('users delete admin') && $this->id !== $user->id,
+                    route('admin.voluntarios.destroy', $this->id)
                 ),
             ],
         ];

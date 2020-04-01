@@ -18,6 +18,10 @@ return [
         'index' => 'Usuários Clientes'
     ],
 
+    'users-voluntary' => [
+        'index' => 'Usuários Voluntários'
+    ],
+
     'profile' => [
         'index' => 'Perfil'
     ],

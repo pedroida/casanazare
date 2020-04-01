@@ -22,10 +22,6 @@ return [
         'create' => 'Usuário Administrador :. Novo',
     ],
 
-    'profile' => [
-        'index' => 'Perfil'
-    ],
-
     'client-users' => [
         'label' => 'Clientes',
         'index' => 'Usuários Clientes',
@@ -34,4 +30,15 @@ return [
         'create' => 'Usuário Cliente :. Novo',
     ],
 
+    'voluntary-users' => [
+        'label' => 'Voluntários',
+        'index' => 'Usuários Voluntários',
+        'show' => 'Usuário Voluntário :. Detalhes',
+        'edit' => 'Usuário Voluntário :. Edição',
+        'create' => 'Usuário Voluntário :. Novo',
+    ],
+
+    'profile' => [
+        'index' => 'Perfil'
+    ],
 ];

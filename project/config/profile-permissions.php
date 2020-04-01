@@ -15,6 +15,11 @@ return [
             'show client',
             'list client',
             'delete client',
+            'create voluntary',
+            'edit voluntary',
+            'show voluntary',
+            'list voluntary',
+            'delete voluntary',
         ],
 
         'profile' => [
@@ -22,7 +27,7 @@ return [
         ],
     ],
 
-    UserRolesEnum::CLIENT => [
+    UserRolesEnum::VOLUNTARY => [
         'profile' => [
             'edit client',
         ],

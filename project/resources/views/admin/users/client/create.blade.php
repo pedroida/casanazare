@@ -11,7 +11,7 @@
             @lang('breadcrumb.common.home')
         </breadcrumb-item>
 
-        <breadcrumb-item href="{{ route('admin.admin-users.index') }}">
+        <breadcrumb-item href="{{ route('admin.administradores.index') }}">
             @lang('breadcrumb.users-client.index')
         </breadcrumb-item>
 
@@ -23,12 +23,12 @@
 
 @section('content')
 <div class="card card-secondary">
-    <form class="form-horizontal" method="POST" action="{{ route('admin.client-users.store') }}">
+    <form class="form-horizontal" method="POST" action="{{ route('admin.acolhidos.store') }}">
         <div class="card-body pb-0">
             @include('admin.users.client._partials.form')
         </div>
         <div class="card-footer">
-            @include('shared.create_buttons', ['urlBack' => route('admin.client-users.index')])
+            @include('shared.create_buttons', ['urlBack' => route('admin.acolhidos.index')])
         </div>
     </form>
 </div>

@@ -9,4 +9,5 @@
 
 /** Users */
 Route::get('admin-users', 'AdminUserController@pagination')->name('admin-users');
+Route::get('voluntary-users', 'VoluntaryUserController@pagination')->name('voluntary-users');
 Route::get('client-users', 'ClientUserController@pagination')->name('client-users');

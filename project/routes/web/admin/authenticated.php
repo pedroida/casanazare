@@ -12,5 +12,6 @@ Route::get('profile', 'ProfileController@index')->name('profile');
 Route::put('profile', 'ProfileController@update')->name('profile.update');
 
 /** Users */
-Route::resource('admin-users', 'AdminUserController', ['parameters' => ['admin-users' => 'id']]);
-Route::resource('client-users', 'ClientUserController', ['parameters' => ['client-users' => 'id']]);
+Route::resource('administradores', 'AdminUserController', ['parameters' => ['admin-users' => 'id']]);
+Route::resource('voluntarios', 'VoluntaryUserController', ['parameters' => ['voluntary-users' => 'id']]);
+Route::resource('acolhidos', 'ClientUserController', ['parameters' => ['client-users' => 'id']]);

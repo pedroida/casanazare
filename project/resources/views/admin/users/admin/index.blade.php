@@ -22,7 +22,7 @@
     <data-list
         data-source="{{ route('admin.pagination.admin-users') }}"
         delete-message="@lang('flash.common.confirmation.destroy')"
-        url-create="{{ route('admin.admin-users.create') }}"
+        url-create="{{ route('admin.administradores.create') }}"
         label-create="@lang('links.common.create')"
     />
 

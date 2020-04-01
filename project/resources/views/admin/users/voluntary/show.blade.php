@@ -1,18 +1,18 @@
 @extends('layouts.app')
-@section('title', __('headings.admin-users.show'))
+@section('title', __('headings.voluntary-users.show'))
 
 @section('page-header')
     <h1>
         <i class="fas fa-user-shield fa-fw mr-2 text-muted"></i>
-        @lang('headings.admin-users.show')
+        @lang('headings.voluntary-users.show')
     </h1>
     <breadcrumb>
         <breadcrumb-item href="{{ route('home') }}">
             @lang('breadcrumb.common.home')
         </breadcrumb-item>
 
-        <breadcrumb-item href="{{ route('admin.administradores.index') }}">
-            @lang('breadcrumb.users-admin.index')
+        <breadcrumb-item href="{{ route('admin.voluntarios.index') }}">
+            @lang('breadcrumb.users-voluntary.index')
         </breadcrumb-item>
 
         <breadcrumb-item active>
@@ -78,8 +78,8 @@
 
         <div class="card-footer">
             @include('shared.show_buttons', [
-                'urlBack' => route('admin.administradores.index'),
-                'urlEdit' => route('admin.administradores.edit', $user->id)
+                'urlBack' => route('admin.voluntarios.index'),
+                'urlEdit' => route('admin.voluntarios.edit', $user->id)
             ])
         </div>
     </div>

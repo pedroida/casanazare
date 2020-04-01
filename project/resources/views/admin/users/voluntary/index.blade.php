@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title', __('headings.client-users.index'))
+@section('title', __('headings.voluntary-users.index'))
 
 @section('page-header')
     <h1>
-        <i class="fas fa-user-friends fa-fw mr-2 text-muted"></i>
-        @lang('headings.client-users.index')
+        <i class="fas fa-user-shield fa-fw mr-2 text-muted"></i>
+        @lang('headings.voluntary-users.index')
     </h1>
 
     <breadcrumb>
@@ -13,16 +13,16 @@
         </breadcrumb-item>
 
         <breadcrumb-item active>
-            @lang('breadcrumb.users-client.index')
+            @lang('breadcrumb.users-voluntary.index')
         </breadcrumb-item>
     </breadcrumb>
 @endsection
 
 @section('content')
     <data-list
-        data-source="{{ route('admin.pagination.client-users') }}"
+        data-source="{{ route('admin.pagination.voluntary-users') }}"
         delete-message="@lang('flash.common.confirmation.destroy')"
-        url-create="{{ route('admin.acolhidos.create') }}"
+        url-create="{{ route('admin.voluntarios.create') }}"
         label-create="@lang('links.common.create')"
     />
 
@@ -34,7 +34,10 @@
                     @include('admin.users._partials.tabs')
                 </div>
                 <div class="card-header">
-                    <input type="text" v-model="query" class="form-control col-md-4 mb-2 mb-md-0" placeholder="Buscar ...">
+                    <input type="text" v-model="query"
+                        class="form-control col-md-4 mb-2 mb-md-0"
+                        placeholder="@lang('placeholders.common.search')">
+
                     @can('users create admin')
                         <div class="col-md-4 offset-md-4 text-right">
                             <a v-if="urlCreate"
@@ -49,7 +52,7 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-md table-vcenter mb-0">
                             <thead>
-                                @include('admin.users.client._partials.head')
+                                @include('admin.users.admin._partials.head')
                             </thead>
                             <tbody>
                                 <tr v-if="emptyResult">
@@ -57,7 +60,7 @@
                                 </tr>
                                 <template v-else>
                                     <tr v-for="(item, index) in items" :key="index">
-                                        @include('admin.users.client._partials.body')
+                                        @include('admin.users.admin._partials.body')
                                     </tr>
                                 </template>
                             </tbody>
