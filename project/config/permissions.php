@@ -27,4 +27,11 @@ return [
         'list voluntary',
         'delete voluntary',
     ],
+
+    'sources' => [
+        'create',
+        'edit',
+        'list',
+        'delete',
+    ],
 ];

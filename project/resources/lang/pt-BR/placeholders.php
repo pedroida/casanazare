@@ -26,6 +26,9 @@ return [
         'password' => 'Digite a senha',
         'new_password' => 'Digite a nova senha',
         'password_confirmation' => 'Confirme a senha',
-    ]
+    ],
 
+    'sources' => [
+        'name' => 'Nome do lugar',
+    ]
 ];

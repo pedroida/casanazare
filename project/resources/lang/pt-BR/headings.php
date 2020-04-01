@@ -6,6 +6,7 @@ return [
         'registration' => 'Cadastros',
         'dashboard' => 'Dashboard',
         'users' => 'Usuários',
+        'sources' => 'Origens',
     ],
 
     'auth' => [
@@ -36,6 +37,14 @@ return [
         'show' => 'Usuário Voluntário :. Detalhes',
         'edit' => 'Usuário Voluntário :. Edição',
         'create' => 'Usuário Voluntário :. Novo',
+    ],
+
+    'sources' => [
+        'label' => 'Origens',
+        'index' => 'Origens',
+        'show' => 'Origem :. Detalhes',
+        'edit' => 'Origem :. Edição',
+        'create' => 'Origem :. Novo',
     ],
 
     'profile' => [

@@ -22,6 +22,13 @@ return [
             'delete voluntary',
         ],
 
+        'sources' => [
+            'create',
+            'edit',
+            'list',
+            'delete',
+        ],
+
         'profile' => [
             'edit admin',
         ],

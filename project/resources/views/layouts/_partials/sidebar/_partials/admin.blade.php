@@ -17,4 +17,14 @@
       </a>
     </li>
   @endif
+
+  @if(current_user()->can('sources list'))
+    <li class="{{ is_active('admin.origens.index') }}">
+      <a class="nav-link" href="{{ route('admin.origens.index') }}" data-toggle="tooltip" data-placement="right"
+         title="@lang('headings.common.sources')">
+        <i class="fas fa-building"></i>
+        <span>@lang('headings.common.sources')</span>
+      </a>
+    </li>
+  @endif
 </ul>

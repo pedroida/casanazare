@@ -22,6 +22,10 @@ return [
         'index' => 'Usuários Voluntários'
     ],
 
+    'sources' => [
+        'index' => 'Origens'
+    ],
+
     'profile' => [
         'index' => 'Perfil'
     ],
