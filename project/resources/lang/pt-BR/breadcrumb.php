@@ -30,6 +30,10 @@ return [
         'index' => 'Acolhidos',
     ],
 
+    'stays' => [
+        'index' => 'Estadias',
+    ],
+
     'profile' => [
         'index' => 'Perfil'
     ],

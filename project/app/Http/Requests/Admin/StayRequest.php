@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientRequest extends FormRequest
+class StayRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,12 @@ class ClientRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'name' => 'required|max:255',
-            'rg' => 'required|size:12',
-            'date_of_birth' => 'required|date_format:"d/m/Y"|before:today',
-            'phone_one' => 'required|min:14',
-            'phone_two' => 'required|min:14',
-            'city_id' => 'required|exists:cities,id',
+            'name' => 'max:255|required|unique:sources,name',
         ];
+
+        if (in_array($this->method(), ['PUT', 'PATCH'])) {
+            $rules['name'] .= ",{$this->source}";
+        }
 
         return $rules;
     }

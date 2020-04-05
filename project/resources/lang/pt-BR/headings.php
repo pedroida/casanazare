@@ -8,6 +8,7 @@ return [
         'users' => 'Usuários',
         'sources' => 'Origens',
         'clients' => 'Acolhidos',
+        'stays' => 'Estadias',
     ],
 
     'auth' => [
@@ -54,6 +55,14 @@ return [
         'show' => 'Acolhido :. Detalhes',
         'edit' => 'Acolhido :. Edição',
         'create' => 'Acolhido :. Novo',
+    ],
+
+    'stays' => [
+        'label' => 'Estadias',
+        'index' => 'Estadias',
+        'show' => 'Estadia :. Detalhes',
+        'edit' => 'Estadia :. Edição',
+        'create' => 'Estadia :. Novo',
     ],
 
     'profile' => [

@@ -34,4 +34,11 @@ return [
         'list',
         'delete',
     ],
+
+    'stays' => [
+        'create',
+        'edit',
+        'list',
+        'delete',
+    ],
 ];

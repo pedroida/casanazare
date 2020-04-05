@@ -38,6 +38,16 @@ return [
         'phone_one' => 'Telefone 1',
         'phone_two' => 'Telefone 2',
         'city-state' => 'Cidade/Estado',
+        'entry_date' => 'Data de entrada',
+        'departure_date' => 'Data de saída',
+        'client' => 'Acolhido',
+        'source' => 'Origem',
+        'responsible' => 'Responsável',
+        'comments' => 'Observações',
+        'type' => 'Tipo',
+
+        \App\Enums\StayTypeEnum::PATIENT => 'Paciente',
+        \App\Enums\StayTypeEnum::COMPANION => 'Acompanhante',
     ]
 
 ];

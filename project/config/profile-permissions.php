@@ -29,6 +29,13 @@ return [
             'delete',
         ],
 
+        'stays' => [
+            'create',
+            'edit',
+            'list',
+            'delete',
+        ],
+
         'profile' => [
             'edit admin',
         ],
@@ -37,6 +44,13 @@ return [
     UserRolesEnum::VOLUNTARY => [
         'profile' => [
             'edit client',
+        ],
+
+        'stays' => [
+            'create',
+            'edit',
+            'list',
+            'delete',
         ],
     ],
 ];

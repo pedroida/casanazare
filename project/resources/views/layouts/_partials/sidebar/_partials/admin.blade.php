@@ -7,6 +7,17 @@
     </a>
   </li>
 
+  <li class="menu-header">@lang('headings.common.stays')</li>
+  @if(current_user()->can('stays list'))
+    <li class="{{ is_active('admin.estadias.index') }}">
+      <a class="nav-link" href="{{ route('admin.estadias.index') }}" data-toggle="tooltip" data-placement="right"
+         title="@lang('headings.common.stays')">
+        <i class="fas fa-calendar-plus"></i>
+        <span>@lang('headings.common.stays')</span>
+      </a>
+    </li>
+  @endif
+
   <li class="menu-header">@lang('headings.common.registration')</li>
   @if(current_user()->can('users list admin'))
     <li class="{{ is_active(['admin.administradores.index', 'admin.voluntarios.index']) }}">

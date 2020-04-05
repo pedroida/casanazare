@@ -85,8 +85,6 @@
       </label>
 
       <select
-
-          :name="getFieldName('state')"
           :class="{'is-invalid' : hasErrors('state') }"
           class="form-control custom-select"
           v-model="stateSelected">

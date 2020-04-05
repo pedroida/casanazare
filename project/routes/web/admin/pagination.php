@@ -13,3 +13,4 @@ Route::get('voluntary-users', 'VoluntaryUserController@pagination')->name('volun
 Route::get('clients', 'ClientController@pagination')->name('clients');
 
 Route::get('sources', 'SourceController@pagination')->name('sources');
+Route::get('stays', 'StayController@pagination')->name('stays');
