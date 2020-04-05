@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\UserRolesEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ClientUserRequest;
+use App\Http\Requests\Admin\ClientRequest;
 use App\Http\Requests\Admin\SourceRequest;
-use App\Http\Resources\Admin\ClientUserResource;
+use App\Http\Resources\Admin\ClientResource;
 use App\Http\Resources\Admin\SourceResource;
 use App\Models\Source;
 use App\Models\User;

@@ -9,6 +9,7 @@ return [
         'state' => '-- Selecione um estado --',
         'phone' => '(99) 9999-9999',
         'cep' => '00000-000',
+        'rg' => '00.000.000-0',
         'date' => '00/00/0000',
         'title' => 'Digite o título',
         'body' => 'Digite o conteúdo',

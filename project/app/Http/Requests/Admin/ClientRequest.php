@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientUserRequest extends FormRequest
+class ClientRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,14 +25,13 @@ class ClientUserRequest extends FormRequest
     {
         $rules = [
             'name' => 'required|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed|string|min:6|max:12',
+            'rg' => 'required|size:12',
+            'date_of_birth' => 'required|date_format:"d/m/Y"|before:today',
+            'phone_one' => 'required|min:14',
+            'phone_two' => 'required|min:14',
+            'state' => 'required|exists:states,abbr',
+            'city_id' => 'required|exists:cities,id',
         ];
-
-        if (in_array($this->method(), ['PUT', 'PATCH'])) {
-            $rules['email'] .= ",{$this->id}";
-            $rules['password'] = data_get($this, 'password', '') ? $rules['password'] : '';
-        }
 
         return $rules;
     }

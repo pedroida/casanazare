@@ -4,7 +4,7 @@ namespace App\Http\Resources\Admin;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class ClientUserResource extends Resource
+class ClientResource extends Resource
 {
     public function toArray($request)
     {
@@ -12,7 +12,9 @@ class ClientUserResource extends Resource
 
         return [
             'name' => $this->name,
-            'email' => $this->email,
+            'rg' => $this->rg,
+            'phone_one' => $this->phone_one,
+            'date_of_birth' => format_date($this->date_of_birth, 'd/m/Y'),
             'created_at' => format_date($this->created_at),
             'links' => [
                 'edit' => $this->when(

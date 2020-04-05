@@ -26,6 +26,10 @@ return [
         'index' => 'Origens'
     ],
 
+    'clients' => [
+        'index' => 'Acolhidos',
+    ],
+
     'profile' => [
         'index' => 'Perfil'
     ],

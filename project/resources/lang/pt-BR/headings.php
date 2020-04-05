@@ -7,6 +7,7 @@ return [
         'dashboard' => 'Dashboard',
         'users' => 'Usuários',
         'sources' => 'Origens',
+        'clients' => 'Acolhidos',
     ],
 
     'auth' => [
@@ -45,6 +46,14 @@ return [
         'show' => 'Origem :. Detalhes',
         'edit' => 'Origem :. Edição',
         'create' => 'Origem :. Novo',
+    ],
+
+    'clients' => [
+        'label' => 'Acolhidos',
+        'index' => 'Acolhidos',
+        'show' => 'Acolhido :. Detalhes',
+        'edit' => 'Acolhido :. Edição',
+        'create' => 'Acolhido :. Novo',
     ],
 
     'profile' => [

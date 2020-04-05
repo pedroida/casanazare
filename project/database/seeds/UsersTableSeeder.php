@@ -9,13 +9,12 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $user = User::firstOrNew([
-            'email' => 'admin@email.com.br',
+            'email' => 'pedrohsida@hotmail.com',
         ]);
 
         $user->fill([
             'name' => 'Administrador',
-            'email' => 'admin@email.com.br',
-            'password' => \Hash::make('123456')
+            'password' => \Hash::make('josecuervo')
         ]);
 
         $user->save();

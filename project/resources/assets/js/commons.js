@@ -5,3 +5,4 @@ require('./template/custom')
 
 /** Pluguins */
 require('./pluguins/masks/masks')
+window.dayjs = require('dayjs');

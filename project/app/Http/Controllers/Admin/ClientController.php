@@ -4,18 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\UserRolesEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ClientUserRequest;
-use App\Http\Resources\Admin\ClientUserResource;
+use App\Http\Requests\Admin\ClientRequest;
+use App\Http\Resources\Admin\ClientResource;
+use App\Models\Client;
 use App\Models\User;
+use App\Repositories\ClientRepository;
 use App\Repositories\Criterias\Common\UserRole;
+use App\Repositories\Criterias\Common\With;
 use App\Repositories\UserRepository;
 
-class ClientUserController extends Controller
+class ClientController extends Controller
 {
     public function __construct()
     {
-        $this->repository = new UserRepository();
-        $this->resource = ClientUserResource::class;
+        $this->repository = new ClientRepository();
+        $this->resource = ClientResource::class;
 
         $this->middleware('permission:users create client')->only(['create', 'store']);
         $this->middleware('permission:users edit client')->only(['edit', 'update']);
@@ -26,22 +29,21 @@ class ClientUserController extends Controller
 
     public function index()
     {
-        return view('admin.users.client.index');
+        return view('admin.clients.index');
     }
 
     public function create()
     {
-        $user = new User();
+        $client = new Client();
 
-        return view('admin.users.client.create', compact('user'));
+        return view('admin.clients.create', compact('client'));
     }
 
-    public function store(ClientUserRequest $request)
+    public function store(ClientRequest $request)
     {
-        $userData = $request->validated();
+        $data = $request->validated();
 
-        $user = $this->repository->createUser($userData);
-        $user->assignRole(UserRolesEnum::CLIENT);
+        $user = $this->repository->create($data);
 
         $message = _m('common.success.create');
         return $this->chooseReturn('success', $message, 'admin.acolhidos.edit', $user->id);
@@ -49,17 +51,16 @@ class ClientUserController extends Controller
 
     public function edit($id)
     {
-        $user = $this->repository->findOrFail($id);
+        $client = $this->repository->pushCriteria(new With(['city', 'city.state']))->findOrFail($id);
 
-        return view('admin.users.client.edit', compact('user'));
+        return view('admin.clients.edit', compact('client'));
     }
 
-    public function update(ClientUserRequest $request, $id)
+    public function update(ClientRequest $request, $id)
     {
-        $userData = $request->validated();
+        $data = $request->validated();
 
-        $user = $this->repository->findOrFail($id);
-        $this->repository->updateUser($user, $userData);
+        $this->repository->update($id, $data);
 
         $message = _m('common.success.update');
         return $this->chooseReturn('success', $message, 'admin.acolhidos.edit', $id);
@@ -67,8 +68,8 @@ class ClientUserController extends Controller
 
     public function show($id)
     {
-        $user = $this->repository->findOrFail($id);
-        return view('admin.users.client.show', compact('user'));
+        $client = $this->repository->findOrFail($id);
+        return view('admin.clients.show', compact('client'));
     }
 
     public function destroy($id)
@@ -87,9 +88,6 @@ class ClientUserController extends Controller
     {
         $pagination
             ->repository($this->repository)
-            ->criterias([
-                new UserRole(UserRolesEnum::CLIENT),
-            ])
             ->defaultOrderBy('created_at', 'DESC')
             ->resource($this->resource);
     }

@@ -33,6 +33,11 @@ return [
         'download_credentials' => 'Download Credentials',
         'redirect_url' => 'URL de redirecionamento',
         'identifier' => 'Identificador',
+        'date_of_birth' => 'Data de nascimento',
+        'rg' => 'RG',
+        'phone_one' => 'Telefone 1',
+        'phone_two' => 'Telefone 2',
+        'city-state' => 'Cidade/Estado',
     ]
 
 ];
