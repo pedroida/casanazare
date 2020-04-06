@@ -1,15 +1,21 @@
 <tr>
-  <th sortable @click="orderBy('name', $event)">
+  <th>
     @lang('labels.common.name')
   </th>
-  <th sortable @click="orderBy('rg', $event)">
-    @lang('labels.common.rg')
+  <th>
+    @lang('labels.common.source')
   </th>
-  <th sortable @click="orderBy('phone_one', $event)">
-    @lang('labels.common.phone_one')
+  <th>
+    @lang('labels.common.responsible')
   </th>
-  <th sortable @click="orderBy('date_of_birth', $event)">
-    @lang('labels.common.date_of_birth')
+  <th>
+    @lang('labels.common.type')
+  </th>
+  <th sortable @click="orderBy('entry_date', $event)">
+    @lang('labels.common.entry_date')
+  </th>
+  <th sortable @click="orderBy('departure_date', $event)">
+    @lang('labels.common.departure_date')
   </th>
   <th sortable @click="orderBy('created_at', $event)">
     @lang('labels.common.created_at')

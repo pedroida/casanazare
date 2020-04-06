@@ -11,20 +11,25 @@ class StayResource extends Resource
         $user = current_user();
 
         return [
-            'name' => $this->name,
+            'client_name' => $this->client->name,
+            'source_name' => $this->source->name,
             'created_at' => format_date($this->created_at),
+            'responsible_name' => $this->responsible->name,
+            'type' => __('labels.common.' . $this->type),
+            'entry_date' => format_date($this->entry_date, 'd/m/Y'),
+            'departure_date' => format_date($this->departure_date, 'd/m/Y'),
             'links' => [
                 'edit' => $this->when(
-                    $user->can('sources edit'),
-                    route('admin.origens.edit', $this->resource)
+                    $user->can('stays edit'),
+                    route('admin.estadias.edit', $this->resource)
                 ),
                 'show' => $this->when(
-                    $user->can('sources show'),
-                    route('admin.origens.show', $this->resource)
+                    $user->can('stays show'),
+                    route('admin.estadias.show', $this->resource)
                 ),
                 'destroy' => $this->when(
-                    $user->can('sources delete'),
-                    route('admin.origens.destroy', $this->resource)
+                    $user->can('stays delete'),
+                    route('admin.estadias.destroy', $this->resource)
                 ),
             ],
         ];

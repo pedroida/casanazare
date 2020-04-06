@@ -34,3 +34,8 @@
     </form>
 </div>
 @endsection
+@section('scripts')
+    <script>
+       console.log(new Date('{{ format_date($stay->entry_date ?? now()->format('Y/m/d'), 'd/m/Y') }}'))
+    </script>
+@endsection

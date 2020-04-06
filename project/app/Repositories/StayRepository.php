@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Models\Source;
+use App\Models\Stay;
 
 class StayRepository extends Repository
 {
     protected function getClass()
     {
-        return Source::class;
+        return Stay::class;
     }
 
 }

@@ -108,7 +108,7 @@
                     input-class="form-control"
                     wrapper-class="w-100"
                     format="dd/MM/yyyy"
-                    :value="new Date('{{ format_date($stay->entry_date ?? now()->format('Y/m/d'), 'd/m/Y') }}')">
+                    :value="new Date('{{ format_date($stay->entry_date ?? now(), 'Y,m,d') }}')">
             </datepicker>
         </div>
         @errorblock('entry_date')
@@ -131,7 +131,7 @@
                     input-class="form-control"
                     wrapper-class="w-100"
                     @if($stay->departure_date)
-                    :value="new Date('{{ format_date($stay->departure_date, 'd/m/Y') }}')"
+                    :value="new Date('{{ format_date($stay->departure_date, 'Y,m,d') }}')"
                     @endif
                     format="dd/MM/yyyy">
             </datepicker>

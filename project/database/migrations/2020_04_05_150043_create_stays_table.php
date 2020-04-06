@@ -29,7 +29,7 @@ class CreateStaysTable extends Migration
 
             $table->date('entry_date');
 
-            $table->date('departure_date');
+            $table->date('departure_date')->nullable();
 
             $table->text('comments')->nullable();
 

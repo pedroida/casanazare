@@ -73,4 +73,6 @@
   @stack('page_specific_scripts')
 </body>
 
+@yield('scripts')
+
 </html>
