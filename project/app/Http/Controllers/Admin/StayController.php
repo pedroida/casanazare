@@ -43,14 +43,14 @@ class StayController extends Controller
     {
         $stay = new Stay();
         $users = (new UserRepository())->all();
-        $clients = (new ClientRepository())->all();
+        $clients = (new ClientRepository())->getAvailableClients();
         $sources = (new SourceRepository())->all();
         return view('admin.stays.create', compact('stay', 'clients', 'sources', 'users'));
     }
 
     public function store(StayRequest $request)
     {
-        $data = $request->validated();
+        $data = $request->all();
 
         $this->repository->create($data);
 

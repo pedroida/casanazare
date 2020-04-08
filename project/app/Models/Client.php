@@ -40,6 +40,11 @@ class Client extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function stays()
+    {
+        return $this->hasMany(Stay::class);
+    }
+
     public function getYearsOldAttribute()
     {
         return now()->diffInYears($this->date_of_birth);
