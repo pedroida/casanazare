@@ -295,6 +295,8 @@ export default {
     },
 
     listenLoadingEvents() {
+      this.$root.$on('reload-data', () => this.fetchData());
+
       this.$root.$on("start-loading", () => {
         this.isLoading = true;
       });

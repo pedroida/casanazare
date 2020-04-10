@@ -10,4 +10,6 @@ Vue.component("approve-buttons", require('@/components/buttons/ApproveButtons.vu
 
 Vue.component('address-component', require('@/components/AddressComponent.vue'));
 
+Vue.component('meal-modal', require('@/components/MealModal.vue'));
+
 Vue.component('datepicker', DatePicker);

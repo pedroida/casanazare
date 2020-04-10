@@ -32,6 +32,8 @@
       <!-- Sidebar -->
       @include('layouts._partials.sidebar.sidebar')
 
+      @yield('modal-section')
+
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">

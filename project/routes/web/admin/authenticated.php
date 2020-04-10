@@ -16,6 +16,7 @@ Route::resource('administradores', 'AdminUserController', ['parameters' => ['adm
 Route::resource('voluntarios', 'VoluntaryUserController', ['parameters' => ['voluntary-users' => 'id']]);
 Route::resource('acolhidos', 'ClientController');
 Route::resource('estadias', 'StayController');
+Route::resource('refeicoes', 'MealController')->except(['create', 'edit']);
 
 Route::resource('origens', 'SourceController', ['parameters' => ['origens' => 'source']]);
 

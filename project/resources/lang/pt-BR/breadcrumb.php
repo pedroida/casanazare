@@ -26,6 +26,10 @@ return [
         'index' => 'Origens'
     ],
 
+    'meals' => [
+        'index' => 'Refeições',
+    ],
+
     'clients' => [
         'index' => 'Acolhidos',
     ],

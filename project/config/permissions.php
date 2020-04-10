@@ -41,4 +41,11 @@ return [
         'list',
         'delete',
     ],
+
+    'meals' => [
+        'create',
+        'edit',
+        'list',
+        'delete',
+    ],
 ];

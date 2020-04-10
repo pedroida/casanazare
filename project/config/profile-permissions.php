@@ -36,6 +36,13 @@ return [
             'delete',
         ],
 
+        'meals' => [
+            'create',
+            'edit',
+            'list',
+            'delete',
+        ],
+
         'profile' => [
             'edit admin',
         ],
@@ -47,6 +54,13 @@ return [
         ],
 
         'stays' => [
+            'create',
+            'edit',
+            'list',
+            'delete',
+        ],
+
+        'meals' => [
             'create',
             'edit',
             'list',

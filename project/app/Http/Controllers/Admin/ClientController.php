@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\UserRolesEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ClientRequest;
 use App\Http\Resources\Admin\ClientResource;
 use App\Models\Client;
-use App\Models\User;
 use App\Repositories\ClientRepository;
-use App\Repositories\Criterias\Common\UserRole;
 use App\Repositories\Criterias\Common\With;
-use App\Repositories\UserRepository;
 
 class ClientController extends Controller
 {

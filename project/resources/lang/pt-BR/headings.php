@@ -5,8 +5,9 @@ return [
         'home' => 'Home',
         'registration' => 'Cadastros',
         'dashboard' => 'Dashboard',
-        'users' => 'Usuários',
+        'users' => 'Administradores',
         'sources' => 'Origens',
+        'meals' => 'Refeições',
         'clients' => 'Acolhidos',
         'stays' => 'Estadias',
     ],
@@ -47,6 +48,11 @@ return [
         'show' => 'Origem :. Detalhes',
         'edit' => 'Origem :. Edição',
         'create' => 'Origem :. Novo',
+    ],
+
+    'meals' => [
+        'label' => 'Refeições',
+        'index' => 'Refeições',
     ],
 
     'clients' => [

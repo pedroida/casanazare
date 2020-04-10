@@ -45,6 +45,7 @@ return [
         'responsible' => 'Responsável',
         'comments' => 'Observações',
         'type' => 'Tipo',
+        'create_meal' => 'Cadastrar novo dia de refeição',
 
         \App\Enums\StayTypeEnum::PATIENT => 'Paciente',
         \App\Enums\StayTypeEnum::COMPANION => 'Acompanhante',

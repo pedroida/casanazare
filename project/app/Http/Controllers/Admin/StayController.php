@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\UserRolesEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ClientRequest;
-use App\Http\Requests\Admin\SourceRequest;
 use App\Http\Requests\Admin\StayRequest;
-use App\Http\Resources\Admin\ClientResource;
-use App\Http\Resources\Admin\SourceResource;
 use App\Http\Resources\Admin\StayResource;
 use App\Models\Source;
 use App\Models\Stay;
-use App\Models\User;
 use App\Repositories\ClientRepository;
-use App\Repositories\Criterias\Common\UserRole;
 use App\Repositories\Criterias\Common\With;
 use App\Repositories\SourceRepository;
 use App\Repositories\StayRepository;
