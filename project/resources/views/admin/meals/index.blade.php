@@ -41,6 +41,10 @@
             <div class="card">
                 <div class="card-header">
 
+                    <div class="col-md-2">
+                        <filter-date url-key="day"></filter-date>
+                    </div>
+
                     @can('meals create')
                         <div class="col-md-4 offset-md-4 text-right">
                             <a @click="$root.$emit('createMeal')"

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\MealRequest;
 use App\Http\Resources\Admin\MealResource;
+use App\Repositories\Criterias\Common\Where;
 use App\Repositories\MealRepository;
 
 class MealController extends Controller
@@ -58,8 +59,15 @@ class MealController extends Controller
 
     public function getPagination($pagination)
     {
+        $criterias = [];
+
+        if (request()->get('day')) {
+            $criterias[] = new Where('day', request()->get('day'));
+        }
+
         $pagination
             ->repository($this->repository)
+            ->criterias($criterias)
             ->defaultOrderBy('day', 'desc')
             ->resource($this->resource);
     }

@@ -13,3 +13,5 @@ Vue.component('address-component', require('@/components/AddressComponent.vue'))
 Vue.component('meal-modal', require('@/components/MealModal.vue'));
 
 Vue.component('datepicker', DatePicker);
+
+Vue.component('filter-date', require('@/components/filters/Date.vue'));
