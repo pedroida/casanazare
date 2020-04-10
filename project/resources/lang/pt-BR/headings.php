@@ -9,6 +9,7 @@ return [
         'sources' => 'Origens',
         'meals' => 'Refeições',
         'clients' => 'Acolhidos',
+        'clients_forbidden' => 'Acolhidos proibidos',
         'stays' => 'Estadias',
     ],
 
@@ -58,6 +59,7 @@ return [
     'clients' => [
         'label' => 'Acolhidos',
         'index' => 'Acolhidos',
+        'forbidden_index' => 'Acolhidos proibidos',
         'show' => 'Acolhido :. Detalhes',
         'edit' => 'Acolhido :. Edição',
         'create' => 'Acolhido :. Novo',

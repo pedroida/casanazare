@@ -22,7 +22,7 @@ class Client extends Model
     ];
 
     protected $fillable = [
-        'name', 'rg', 'date_of_birth', 'phone_one', 'phone_two', 'city_id'
+        'name', 'rg', 'date_of_birth', 'phone_one', 'phone_two', 'city_id', 'forbidden',
     ];
 
     protected $casts = [

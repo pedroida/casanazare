@@ -32,6 +32,7 @@ return [
 
     'clients' => [
         'index' => 'Acolhidos',
+        'forbidden_index' => 'Acolhidos proibidos',
     ],
 
     'stays' => [

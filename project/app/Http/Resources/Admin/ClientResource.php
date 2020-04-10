@@ -29,6 +29,14 @@ class ClientResource extends Resource
                     $user->can('users delete client'),
                     route('admin.acolhidos.destroy', $this->id)
                 ),
+                'forbid' => $this->when(
+                    $user->can('users forbid client') && !$this->forbidden,
+                    route('ajax.admin.toggle.forbidden', $this->resource)
+                ),
+                'allow' => $this->when(
+                    $user->can('users allow client') && $this->forbidden,
+                    route('ajax.admin.toggle.forbidden', $this->resource)
+                ),
             ],
         ];
     }

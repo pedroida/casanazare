@@ -15,6 +15,8 @@ return [
             'show client',
             'list client',
             'delete client',
+            'forbid client',
+            'allow client',
             'create voluntary',
             'edit voluntary',
             'show voluntary',

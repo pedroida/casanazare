@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Builders\PaginationBuilder;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ClientRequest;
 use App\Http\Resources\Admin\ClientResource;
 use App\Models\Client;
 use App\Repositories\ClientRepository;
+use App\Repositories\Criterias\Common\Where;
 use App\Repositories\Criterias\Common\With;
+use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
@@ -26,6 +29,19 @@ class ClientController extends Controller
     public function index()
     {
         return view('admin.clients.index');
+    }
+
+    public function forbidden()
+    {
+        return view('admin.clients.forbidden_index');
+    }
+
+    public function toggleForbidden($id)
+    {
+        $client = $this->repository->findOrFail($id);
+        $client->update(['forbidden' => !$client->forbidden]);
+
+        return $this->chooseReturn('success', _m('common.success.update'));
     }
 
     public function create()
@@ -84,7 +100,20 @@ class ClientController extends Controller
     {
         $pagination
             ->repository($this->repository)
+            ->criterias(new Where('forbidden', false))
             ->defaultOrderBy('created_at', 'DESC')
             ->resource($this->resource);
+    }
+
+    public function forbiddenPagination()
+    {
+        $pagination = new PaginationBuilder();
+
+        $pagination->repository($this->repository)
+            ->criterias(new Where('forbidden', true))
+            ->defaultOrderBy('created_at', 'DESC')
+            ->resource($this->resource);
+
+        return $pagination->build();
     }
 }

@@ -20,6 +20,8 @@ Route::resource('refeicoes', 'MealController')->except(['create', 'edit']);
 
 Route::resource('origens', 'SourceController', ['parameters' => ['origens' => 'source']]);
 
+Route::get('acolhidos-proibidos', 'ClientController@forbidden')->name('acolhidos.forbidden');
+
 Route::get('/address/states', 'AddressController@getStatesJson')->name('states.json.all');
 Route::get('/address/{abbr}/cities/', 'AddressController@getCitiesJsonFor')
     ->name('cities.state.json');

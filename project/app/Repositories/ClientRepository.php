@@ -13,8 +13,10 @@ class ClientRepository extends Repository
 
     public function getAvailableClients()
     {
-        return $this->model->whereDoesntHave('stays', function ($query) {
-            return $query->whereNull('departure_date');
-        })->get();
+        return $this->model
+            ->where('forbidden', false)
+            ->whereDoesntHave('stays', function ($query) {
+                return $query->whereNull('departure_date');
+            })->get();
     }
 }
