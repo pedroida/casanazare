@@ -16,6 +16,7 @@
         "laravel/passport": "^8.0",
         "laravel/tinker": "^2.0",
         "myclabs/php-enum": "^1.7",
+        "spatie/laravel-activitylog": "^3.16",
         "spatie/laravel-medialibrary": "^7.0.0",
         "spatie/laravel-permission": "^3.3"
     },
