@@ -52,7 +52,7 @@
                     input-class="form-control"
                     wrapper-class="w-100"
                     format="dd/MM/yyyy"
-                    :value="new Date('{{ format_date($client->date_of_birth ?? now()->format('Y/m/d'), 'd/m/Y') }}')">
+                    :value="new Date('{{ format_date($client->date_of_birth ?? now(), 'Y/m/d') }}')">
             </datepicker>
         </div>
         @errorblock('date_of_birth')
