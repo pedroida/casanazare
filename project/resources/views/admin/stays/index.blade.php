@@ -20,10 +20,10 @@
 
 @section('content')
     <data-list
-        data-source="{{ route('admin.pagination.stays') }}"
-        delete-message="@lang('flash.common.confirmation.destroy')"
-        url-create="{{ route('admin.estadias.create') }}"
-        label-create="@lang('links.common.create')"
+            data-source="{{ route('admin.pagination.stays') }}"
+            delete-message="@lang('flash.common.confirmation.destroy')"
+            url-create="{{ route('admin.estadias.create') }}"
+            label-create="@lang('links.common.create')"
     />
 
     <template id="data-list" slot-scope="modelScope">
@@ -31,32 +31,42 @@
             <loader :show-loader="isLoading"></loader>
             <div class="card">
                 <div class="card-header">
-                    <input type="text" v-model="query" class="form-control col-md-4 mb-2 mb-md-0" placeholder="Buscar ...">
+                    <input type="text" v-model="query" class="form-control col-md-4 mb-2 mb-md-0"
+                           placeholder="Buscar ...">
                     @can('users create admin')
-                        <div class="col-md-4 offset-md-4 text-right">
+
+                        <div class="col-md-8 text-right">
                             <a v-if="urlCreate"
-                                class="btn btn-success" :href="urlCreate" data-toggle="tooltip" :title="labelCreate">
+                               class="btn btn-success" :href="urlCreate" data-toggle="tooltip" :title="labelCreate">
                                 <i class="fas fa-plus fa-fw"></i>
                                 @{{ labelCreate }}
                             </a>
+
+                            <a
+                                    class="btn btn-primary" href="#" data-toggle="tooltip"
+                                    title="Importação de planilha">
+                                <i class="fas fa-plus fa-fw"></i>
+                                Importar planilha
+                            </a>
                         </div>
+
                     @endcan
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <table class="table table-striped table-md table-vcenter mb-0">
                             <thead>
-                                @include('admin.stays._partials.head')
+                            @include('admin.stays._partials.head')
                             </thead>
                             <tbody>
-                                <tr v-if="emptyResult">
-                                    @include('shared.empty_table')
+                            <tr v-if="emptyResult">
+                                @include('shared.empty_table')
+                            </tr>
+                            <template v-else>
+                                <tr v-for="(item, index) in items" :key="index">
+                                    @include('admin.stays._partials.body')
                                 </tr>
-                                <template v-else>
-                                    <tr v-for="(item, index) in items" :key="index">
-                                        @include('admin.stays._partials.body')
-                                    </tr>
-                                </template>
+                            </template>
                             </tbody>
                         </table>
                     </div>

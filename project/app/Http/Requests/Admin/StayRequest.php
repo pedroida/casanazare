@@ -31,7 +31,8 @@ class StayRequest extends FormRequest
             'client_id' => 'required|exists:clients,id',
             'source_id' => 'required|exists:sources,id',
             'responsible_id' => 'required|exists:users,id',
-            'entry_date' => 'required|date',
+            'entry_date' => 'required|date_format:d/m/Y',
+            'departure_date' => 'nullable|date_format:d/m/Y',
             'comments' => 'nullable|string',
         ];
 

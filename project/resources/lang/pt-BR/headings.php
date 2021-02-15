@@ -5,7 +5,7 @@ return [
         'home' => 'Home',
         'registration' => 'Cadastros',
         'dashboard' => 'Dashboard',
-        'users' => 'Administradores',
+        'users' => 'Usuários',
         'sources' => 'Origens',
         'meals' => 'Refeições',
         'clients' => 'Acolhidos',
