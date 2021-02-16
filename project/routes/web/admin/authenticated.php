@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /**
  * Authenticated routes for admin
  * Prefix 'admin', middleware 'auth:'web', 'auth', 'verified', 'user-type:ADMIN'
@@ -11,9 +13,16 @@
 Route::get('profile', 'ProfileController@index')->name('profile');
 Route::put('profile', 'ProfileController@update')->name('profile.update');
 
-/** Users */
+/** System Routes */
 Route::resource('administradores', 'AdminUserController', ['parameters' => ['admin-users' => 'id']]);
 Route::resource('voluntarios', 'VoluntaryUserController', ['parameters' => ['voluntary-users' => 'id']]);
+Route::resource('doacoes', 'DonationController')->parameters(['doacoes' => 'donation']);
+Route::resource('categorias', 'CategoryController')
+    ->parameters(['categorias' => 'category'])
+    ->except(['show']);
+Route::resource('unidades', 'UnitController')
+    ->parameters(['unidades' => 'unit'])
+    ->except(['show']);
 Route::resource('acolhidos', 'ClientController');
 Route::resource('estadias', 'StayController');
 Route::resource('refeicoes', 'MealController')->except(['create', 'edit']);

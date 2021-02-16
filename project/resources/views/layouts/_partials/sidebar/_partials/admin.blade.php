@@ -60,4 +60,29 @@
         </li>
     @endif
 
+    @if(current_user()->can('donations list'))
+        <li class="dropdown">
+            <a href="#" class="nav-link has-dropdown">
+                <i class="fas fa-hand-holding-heart"></i>
+                <span>@lang('headings.common.donations')</span>
+            </a>
+            <ul class="dropdown-menu" style="display: none;">
+                <li>
+                    <a class="nav-link" href="{{ route('admin.doacoes.index') }}">
+                        @lang('headings.common.donations')
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ route('admin.categorias.index') }}">
+                        @lang('headings.common.categories')
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ route('admin.unidades.index') }}">
+                        @lang('headings.common.units')
+                    </a>
+                </li>
+            </ul>
+        </li>
+    @endif
 </ul>

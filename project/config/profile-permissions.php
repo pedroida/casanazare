@@ -45,6 +45,27 @@ return [
             'delete',
         ],
 
+        'donations' => [
+            'create',
+            'edit',
+            'list',
+            'delete',
+        ],
+
+        'categories' => [
+            'create',
+            'edit',
+            'list',
+            'delete',
+        ],
+
+        'units' => [
+            'create',
+            'edit',
+            'list',
+            'delete',
+        ],
+
         'profile' => [
             'edit admin',
         ],

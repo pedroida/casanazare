@@ -11,6 +11,9 @@ return [
         'clients' => 'Acolhidos',
         'clients_forbidden' => 'Acolhidos proibidos',
         'stays' => 'Estadias',
+        'donations' => 'Doações',
+        'categories' => 'Categorias',
+        'units' => 'Unidades'
     ],
 
     'auth' => [
@@ -49,6 +52,30 @@ return [
         'show' => 'Origem :. Detalhes',
         'edit' => 'Origem :. Edição',
         'create' => 'Origem :. Novo',
+    ],
+
+    'donations' => [
+        'label' => 'Doações',
+        'index' => 'Doações',
+        'show' => 'Doação :. Detalhes',
+        'edit' => 'Doação :. Edição',
+        'create' => 'Doação :. Novo',
+    ],
+
+    'categories' => [
+        'label' => 'Categorias',
+        'index' => 'Categorias',
+        'show' => 'Categoria :. Detalhes',
+        'edit' => 'Categoria :. Edição',
+        'create' => 'Categoria :. Novo',
+    ],
+
+    'units' => [
+        'label' => 'Unidades',
+        'index' => 'Unidades',
+        'show' => 'Unidade :. Detalhes',
+        'edit' => 'Unidade :. Edição',
+        'create' => 'Unidade :. Novo',
     ],
 
     'meals' => [

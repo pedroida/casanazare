@@ -31,5 +31,13 @@ return [
 
     'sources' => [
         'name' => 'Nome do lugar',
-    ]
+    ],
+
+    'categories' => [
+        'name' => 'Nome da categoria',
+    ],
+
+    'units' => [
+        'name' => 'Nome da unidade',
+    ],
 ];

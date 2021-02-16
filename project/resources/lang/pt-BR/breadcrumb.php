@@ -26,6 +26,18 @@ return [
         'index' => 'Origens'
     ],
 
+    'donations' => [
+        'index' => 'Doações'
+    ],
+
+    'categories' => [
+        'index' => 'Categorias'
+    ],
+
+    'units' => [
+        'index' => 'Unidades'
+    ],
+
     'meals' => [
         'index' => 'Refeições',
     ],
