@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\DonationRequest;
 use App\Http\Resources\Admin\DonationResource;
+use App\Models\Category;
 use App\Models\Donation;
+use App\Models\Unit;
+use App\Repositories\BaseRepository;
 use App\Repositories\DonationRepository;
 
 class DonationController extends Controller
@@ -29,9 +32,11 @@ class DonationController extends Controller
 
     public function create()
     {
-        $donate = new Donation();
+        $donation = new Donation();
+        $units = (new BaseRepository(Unit::class))->all()->sortBy('name');
+        $categories = (new BaseRepository(Category::class))->all()->sortBy('name');
 
-        return view('admin.donations.create', compact('donate'));
+        return view('admin.donations.create', compact('donation', 'units', 'categories'));
     }
 
     public function store(DonationRequest $request)
@@ -41,13 +46,16 @@ class DonationController extends Controller
         $this->repository->create($data);
 
         $message = _m('common.success.create');
-        return $this->chooseReturn('success', $message, 'admin.origens.index');
+        return $this->chooseReturn('success', $message, 'admin.doacoes.index');
     }
 
     public function edit($id)
     {
-        $source = $this->repository->findOrFail($id);
-        return view('admin.sources.edit', compact('source'));
+        $donation = $this->repository->findOrFail($id);
+        $units = (new BaseRepository(Unit::class))->all()->sortBy('name');
+        $categories = (new BaseRepository(Category::class))->all()->sortBy('name');
+
+        return view('admin.donations.edit', compact('donation', 'units', 'categories'));
     }
 
     public function update(DonationRequest $request, $id)
@@ -57,7 +65,7 @@ class DonationController extends Controller
         $this->repository->update($id, $data);
 
         $message = _m('common.success.update');
-        return $this->chooseReturn('success', $message, 'admin.origens.index');
+        return $this->chooseReturn('success', $message, 'admin.doacoes.index');
     }
 
     public function show(Donation $source)

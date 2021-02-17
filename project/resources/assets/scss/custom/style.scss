@@ -5,3 +5,9 @@
 
 // Components
 @import "components";
+
+//generic customize
+
+.vdp-datepicker > div > .form-control[readonly] {
+  background-color: #fdfdff;
+}

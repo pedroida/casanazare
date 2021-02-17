@@ -33,6 +33,14 @@ return [
         'name' => 'Nome do lugar',
     ],
 
+    'donations' => [
+        'name' => 'Nome do item doado',
+        'quantity' => 'Quantidade doada',
+        'validate' => 'Validade do item',
+        'category' => 'Categoria do item',
+        'unit' => 'Unidade do item',
+    ],
+
     'categories' => [
         'name' => 'Nome da categoria',
     ],

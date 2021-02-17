@@ -13,8 +13,10 @@ class DonationResource extends Resource
         return [
             'name' => $this->name,
             'unit' => optional($this->unit)->name,
+            'quantity' => $this->formatted_quantity,
             'category' => optional($this->category)->name,
             'created_at' => format_date($this->created_at),
+            'validate' => format_date($this->validate, 'd/m/Y'),
             'links' => [
                 'edit' => $this->when(
                     $user->can('donations edit'),

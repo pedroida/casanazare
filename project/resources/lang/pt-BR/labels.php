@@ -45,6 +45,10 @@ return [
         'responsible' => 'Responsável',
         'comments' => 'Observações',
         'type' => 'Tipo',
+        'quantity' => 'Quantidade',
+        'validate' => 'Validade',
+        'unit' => 'Unidade',
+        'category' => 'Categoria',
         'create_meal' => 'Cadastrar novo dia de refeição',
 
         \App\Enums\StayTypeEnum::PATIENT => 'Paciente',

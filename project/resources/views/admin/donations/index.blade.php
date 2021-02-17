@@ -3,7 +3,7 @@
 
 @section('page-header')
     <h1>
-        <i class="fas fa-building fa-fw mr-2 text-muted"></i>
+        <i class="fas fas fa-box-open fa-fw mr-2 text-muted"></i>
         @lang('headings.donations.index')
     </h1>
 
