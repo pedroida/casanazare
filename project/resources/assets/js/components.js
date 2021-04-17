@@ -18,3 +18,5 @@ Vue.component('datepicker', DatePicker);
 Vue.component('filter-date', require('@/components/filters/Date.vue'));
 
 Vue.component('import-spreadsheet', require('@/components/ImportSpreadsheet.vue'));
+
+Vue.component('admin-dashboard', require('@/components/AdminDashboard.vue'));
