@@ -40,6 +40,21 @@ export default {
     'filter-date-year': DateYear
   },
 
+  mounted() {
+    this.$on('setFilter', (payload) => {
+      this.selectedDate = payload.value
+      this.filterBy = payload.urlKey
+
+      this.updateData()
+    })
+  },
+
+  watch: {
+    filterBy() {
+      this.updateData();
+    }
+  },
+
   computed: {
     filterByOption() {
       return [
@@ -51,7 +66,18 @@ export default {
 
   data() {
     return {
-      filterBy: 'month'
+      filterBy: 'month',
+      selectedDate: null,
+    }
+  },
+
+  methods: {
+    updateData() {
+      if (this.selectedDate)
+        this.$emit('filterChanged', {
+          filterBy: this.filterBy,
+          date: this.selectedDate
+        })
     }
   }
 }

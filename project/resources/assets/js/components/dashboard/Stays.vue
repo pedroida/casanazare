@@ -9,7 +9,7 @@
 
       </div>
       <div class="card-body">
-        1,201
+        {{ staysCount }}
       </div>
     </div>
   </div>
@@ -17,7 +17,13 @@
 
 <script>
 export default {
-  name: "stays"
+  name: "stays",
+
+  props: {
+    staysCount: {
+      type: Number,
+    }
+  }
 }
 </script>
 

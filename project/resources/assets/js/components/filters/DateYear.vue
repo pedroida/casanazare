@@ -19,7 +19,6 @@
 
 <script>
 import filter from './FilterMixin';
-import dayjs from 'dayjs'
 
 export default {
   name: 'filter-date-year',

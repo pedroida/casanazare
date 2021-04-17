@@ -10,6 +10,6 @@
 
 @section('content')
 
-  <admin-dashboard></admin-dashboard>
+  <admin-dashboard get-data-url="{{ route('ajax.admin.dashboard.get-data') }}"></admin-dashboard>
 
 @endsection

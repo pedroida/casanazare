@@ -6,15 +6,15 @@
       </div>
       <div class="card-stats-items">
         <div class="card-stats-item">
-          <div class="card-stats-item-count">24</div>
+          <div class="card-stats-item-count">{{ meals.breakfasts }}</div>
           <div class="card-stats-item-label">Cafés</div>
         </div>
         <div class="card-stats-item">
-          <div class="card-stats-item-count">12</div>
+          <div class="card-stats-item-count">{{ meals.lunches }}</div>
           <div class="card-stats-item-label">Almoços</div>
         </div>
         <div class="card-stats-item">
-          <div class="card-stats-item-count">23</div>
+          <div class="card-stats-item-count">{{ meals.dinners }}</div>
           <div class="card-stats-item-label">Jantas</div>
         </div>
       </div>
@@ -27,7 +27,7 @@
         <h4>Total no período</h4>
       </div>
       <div class="card-body">
-        59
+        {{ meals.total }}
       </div>
     </div>
   </div>
@@ -35,7 +35,13 @@
 
 <script>
 export default {
-  name: "meals"
+  name: "meals",
+
+  props: {
+    meals: {
+      type: Object,
+    }
+  }
 }
 </script>
 
