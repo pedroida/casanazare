@@ -31,12 +31,8 @@
             <loader :show-loader="isLoading"></loader>
             <div class="card">
                 <div class="card-header">
-                    <input type="text" v-model="query"
-                        class="form-control col-md-4 mb-2 mb-md-0"
-                        placeholder="@lang('placeholders.common.search')">
-
                     @can('categories create')
-                        <div class="col-md-4 offset-md-4 text-right">
+                        <div class="col-12 text-right">
                             <a v-if="urlCreate"
                                 class="btn btn-success" :href="urlCreate" data-toggle="tooltip" :title="labelCreate">
                                 <i class="fas fa-plus fa-fw"></i>

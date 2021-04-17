@@ -36,11 +36,9 @@
             <loader :show-loader="isLoading"></loader>
             <div class="card">
                 <div class="card-header">
-                    <input type="text" v-model="query" class="form-control col-md-4 mb-2 mb-md-0"
-                           placeholder="Buscar ...">
                     @can('users create admin')
 
-                        <div class="col-12 col-md-8 text-md-right">
+                        <div class="col-12 text-md-right">
                             <a v-if="urlCreate"
                                class="btn btn-success float-md-none float-left mr-md-2" :href="urlCreate" data-toggle="tooltip" :title="labelCreate">
                                 <i class="fas fa-plus fa-fw"></i>

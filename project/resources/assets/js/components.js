@@ -2,6 +2,7 @@ import DatePicker from 'vuejs-datepicker';
 
 /** Components */
 Vue.component("data-list", require('@/components/data-list/DataList.vue'));
+Vue.component("search", require('@/components/data-list/Search.vue'));
 Vue.component("loader", require('@/components/data-list/Loader.vue'));
 
 Vue.component("breadcrumb", require('@/components/breadcrumb/Breadcrumb.vue'));

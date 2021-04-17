@@ -11,7 +11,7 @@
 
           <div class="row">
 
-            <div class="col">
+            <div class="col-md-6 col-12">
              <div v-if="!editingMeal" class="form-group">
                <label for="day">Dia</label>
                <datepicker
@@ -32,7 +32,7 @@
               </div>
             </div>
 
-            <div class="col">
+            <div class="col-md-6 col-12">
 
               <div class="form-group">
                 <label for="breakfasts">Cafés da manhã</label>

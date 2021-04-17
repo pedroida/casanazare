@@ -17,3 +17,11 @@
     content: "Buscar"
   }
 }
+
+@include media-breakpoint-down(xs) {
+  .nav-pills {
+    .nav-link {
+      width: 100%;
+    }
+  }
+}

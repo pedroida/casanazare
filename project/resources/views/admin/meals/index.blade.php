@@ -41,17 +41,15 @@
             <div class="card">
                 <div class="card-header">
 
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-12">
                         <filter-date url-key="day"></filter-date>
                     </div>
 
                     @can('meals create')
-                        <div class="col-md-4 offset-md-4 text-right">
+                        <div class="col-md-4 offset-md-6 text-right">
                             <a @click="$root.$emit('createMeal')"
-                                    class="btn btn-success btn-block"
-                               href="#"
-                               data-toggle="tooltip"
-                               :title="labelCreate">
+                               class="btn btn-success btn-block"
+                               href="#">
                                 <i class="fas fa-plus fa-fw"></i>
                                 @{{ labelCreate }}
                             </a>
@@ -66,7 +64,7 @@
                         </h5>
                     </div>
                     <div class="row" v-else>
-                        <div v-for="(item, index) in items" :key="index" class="col-3">
+                        <div v-for="(item, index) in items" :key="index" class="col-md-3 col-12">
                             @include('admin.meals._partials.card')
                         </div>
 

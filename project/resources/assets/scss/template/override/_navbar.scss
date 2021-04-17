@@ -208,13 +208,9 @@
   }
   .navbar {
     .form-inline {
+      max-width: 77%;
       .search-element {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        right: 10px;
-        z-index: 892;
-        display: none;
+        max-width: inherit;
         .form-control {
           float: left;
           border-radius: 3px 0 0 3px;
@@ -232,9 +228,13 @@
         display: none;
       }
     }
-    .nav-link.nav-link-lg div {
-      display: none;
-    }
+    .nav-link.nav-link-lg {
+      &.nav-link-user::after {
+        content: none;
+      }
+      div {
+        display: none;
+      }}
   }
 }
 

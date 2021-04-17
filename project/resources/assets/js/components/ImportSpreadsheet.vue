@@ -2,8 +2,7 @@
   <div>
     <a
       @click="showModal"
-      class="btn btn-primary" href="#" data-toggle="tooltip" data-trigger="hover"
-      :title="buttonLabel">
+      class="btn btn-primary" href="#">
       <i class="fas fa-plus fa-fw"></i>
       {{ buttonLabel }}
     </a>
