@@ -22,6 +22,12 @@ return [
         'success' => [
             'reset_password' => 'Nova senha cadastrada com sucesso!',
         ]
+    ],
+
+    'stays' => [
+        'import' => [
+            'success' => 'A importação está sendo realizada em segundo plano'
+        ]
     ]
 
 ];

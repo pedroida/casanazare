@@ -53,6 +53,11 @@ return [
 
         \App\Enums\StayTypeEnum::PATIENT => 'Paciente',
         \App\Enums\StayTypeEnum::COMPANION => 'Acompanhante',
+    ],
+
+    'stays' => [
+        'import_spreadsheet' => 'Importar planilha',
+        'import_spreadsheet_input_label' => 'Selecione ou arraste a planilha',
     ]
 
 ];

@@ -15,3 +15,5 @@ Vue.component('meal-modal', require('@/components/MealModal.vue'));
 Vue.component('datepicker', DatePicker);
 
 Vue.component('filter-date', require('@/components/filters/Date.vue'));
+
+Vue.component('import-spreadsheet', require('@/components/ImportSpreadsheet.vue'));

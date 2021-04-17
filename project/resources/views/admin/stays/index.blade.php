@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('title', __('headings.stays.index'))
 
+@section('head')
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+
+@endsection
+
 @section('page-header')
     <h1>
         <i class="fas fa-user-plus fa-fw mr-2 text-muted"></i>
@@ -35,19 +40,21 @@
                            placeholder="Buscar ...">
                     @can('users create admin')
 
-                        <div class="col-md-8 text-right">
+                        <div class="col-12 col-md-8 text-md-right">
                             <a v-if="urlCreate"
-                               class="btn btn-success" :href="urlCreate" data-toggle="tooltip" :title="labelCreate">
+                               class="btn btn-success float-md-none float-left mr-md-2" :href="urlCreate" data-toggle="tooltip" :title="labelCreate">
                                 <i class="fas fa-plus fa-fw"></i>
                                 @{{ labelCreate }}
                             </a>
 
-                            <a
-                                    class="btn btn-primary" href="#" data-toggle="tooltip"
-                                    title="Importação de planilha">
-                                <i class="fas fa-plus fa-fw"></i>
-                                Importar planilha
-                            </a>
+                            @can('stays import')
+                                <import-spreadsheet
+                                        class="float-right"
+                                        post-url="{{ route('admin.estadias.import-spreadsheet') }}"
+                                        button-label="@lang('labels.stays.import_spreadsheet')"
+                                        input-label="@lang('labels.stays.import_spreadsheet_input_label')">
+                                </import-spreadsheet>
+                            @endif
                         </div>
 
                     @endcan
@@ -74,4 +81,8 @@
             </div>
         </div>
     </template>
+@endsection
+
+@section('scripts')
+    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 @endsection

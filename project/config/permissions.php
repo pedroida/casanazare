@@ -42,6 +42,7 @@ return [
         'edit',
         'list',
         'delete',
+        'import',
     ],
 
     'meals' => [

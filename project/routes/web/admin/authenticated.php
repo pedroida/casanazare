@@ -25,6 +25,7 @@ Route::resource('unidades', 'UnitController')
     ->except(['show']);
 Route::resource('acolhidos', 'ClientController');
 Route::resource('estadias', 'StayController');
+Route::post('estadias/planilha', 'StayController@import')->name('estadias.import-spreadsheet');
 Route::resource('refeicoes', 'MealController')->except(['create', 'edit']);
 
 Route::resource('origens', 'SourceController', ['parameters' => ['origens' => 'source']]);

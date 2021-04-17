@@ -14,7 +14,7 @@ class StayResource extends Resource
             'client_name' => $this->client->name,
             'source_name' => $this->source->name,
             'created_at' => format_date($this->created_at),
-            'responsible_name' => $this->responsible->name,
+            'responsible_name' => optional($this->responsible)->name ?? 'Não definido',
             'type' => __('labels.common.' . $this->type),
             'entry_date' => format_date($this->entry_date, 'd/m/Y'),
             'departure_date' => format_date($this->departure_date, 'd/m/Y'),

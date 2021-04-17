@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StayImportRequest;
 use App\Http\Requests\Admin\StayRequest;
 use App\Http\Resources\Admin\StayResource;
+use App\Imports\StaysImport;
+use App\Jobs\ImportSpreadsheet;
 use App\Models\Source;
 use App\Models\Stay;
 use App\Repositories\ClientRepository;
@@ -12,6 +15,8 @@ use App\Repositories\Criterias\Common\With;
 use App\Repositories\SourceRepository;
 use App\Repositories\StayRepository;
 use App\Repositories\UserRepository;
+use App\Services\FileService;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StayController extends Controller
 {
@@ -25,6 +30,7 @@ class StayController extends Controller
         $this->middleware('permission:stays show')->only(['show']);
         $this->middleware('permission:stays list')->only(['index']);
         $this->middleware('permission:stays delete')->only(['destroy']);
+        $this->middleware('permission:stays import')->only(['import']);
     }
 
     public function index()
@@ -83,6 +89,16 @@ class StayController extends Controller
         } catch (\Exception $e) {
             return $this->chooseReturn('error', _m('common.error.destroy'));
         }
+    }
+
+    public function import(StayImportRequest $request)
+    {
+        $spreadsheet = $request->file('file');
+
+        $path = FileService::storagedRequestFile($spreadsheet, 'spreadsheets/import');
+        ImportSpreadsheet::dispatch($path);
+
+        return $this->chooseReturn('success', _m('stays.import.success'), 'admin.estadias.index');
     }
 
     public function getPagination($pagination)
