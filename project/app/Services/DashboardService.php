@@ -104,7 +104,10 @@ class DashboardService
 
     private function getStaysGraphic()
     {
-        setlocale(LC_ALL, 'pt_BR');
+        date_default_timezone_set('America/Sao_Paulo');
+        setlocale(LC_ALL, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+        setlocale(LC_TIME, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+
 
         $labels = [];
         $data = [];
@@ -138,7 +141,7 @@ class DashboardService
             ->groupBy
             ->month
             ->each(function ($stays, $entryDate) use (&$labels, &$data, &$colors, &$borderColors) {
-                $labels[] = Carbon::createFromFormat('Y-m-d', $entryDate)->format('M');
+                $labels[] = Carbon::createFromFormat('Y-m-d', $entryDate)->formatLocalized('%B');
                 $data[] = $stays->first()->total;
                 $rgb = $this->randomRgb();
                 $colors[] = "rgba({$rgb},0.5)";
