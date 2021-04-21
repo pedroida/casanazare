@@ -35,7 +35,7 @@ export default {
 
   props: {
     donations: {
-      type: [],
+      type: Array,
     }
   }
 }

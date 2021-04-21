@@ -37,7 +37,7 @@ class StayRequest extends FormRequest
         ];
 
         if (in_array($this->method(), ['PUT', 'PATCH'])) {
-            $rules['client_id'] .= ",{$this->estadia}";
+            unset($rules['client_id']);
         }
 
         return $rules;

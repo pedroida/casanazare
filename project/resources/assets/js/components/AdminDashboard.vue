@@ -13,7 +13,7 @@
     </div>
     <div class="row">
       <div class="col-lg-8">
-        <grouped-stays-chart></grouped-stays-chart>
+        <grouped-stays-chart :graphic-data="staysGraphic"></grouped-stays-chart>
       </div>
       <div class="col-lg-4">
         <received-donations :donations="donations"></received-donations>
@@ -50,7 +50,7 @@ export default {
     this.getData()
 
     this.$on('filterChanged', (payload) => {
-      this.getData()
+      this.getData(payload)
     })
   },
 
@@ -59,6 +59,12 @@ export default {
       meals: {},
       donations: [],
       staysCount: 0,
+      staysGraphic: {
+        labels: [1,2,3],
+        data: [5,6,7],
+        colors: ['#1d29b4', '#e23e3e', '#20ba27'],
+        borderColors: ['#111a53', '#781d1d', '#0f5f13']
+      },
     }
   },
 
@@ -78,6 +84,7 @@ export default {
       this.meals = data.meals;
       this.donations = data.donations;
       this.staysCount = data.stays_count;
+      this.staysGraphic = data.stays_graphic;
     }
   }
 }

@@ -4,51 +4,74 @@
       <h4>Gráfico de estadias no período</h4>
     </div>
     <div class="card-body">
-      <line-chart :chartdata="chartData" :options="chartOptions"></line-chart>
+      <canvas id="grouped-stays-chart" width="400" height="400"></canvas>
     </div>
   </div>
 </template>
 
 <script>
-import LineChart from './LineChart'
+const Chart = require('chart.js');
 
 export default {
   name: "grouped-stays-chart",
 
-  components: {
-    'line-chart': LineChart
+  props: {
+    graphicData: {
+      type: Object,
+    }
   },
 
   mounted() {
+    this.createChart()
+  },
 
+  watch: {
+    graphicData() {
+      this.updateData(this.chart);
+    }
   },
 
   data() {
     return {
-      chartOptions: {
-        responsive: true,
-      },
-
-      chartData: {
-        labels: [this.getRandomInt(), this.getRandomInt()],
-        datasets: [
-          {
-            label: 'Data One',
-            backgroundColor: '#f87979',
-            data: [5, 10]
-          }, {
-            label: 'Data two',
-            backgroundColor: 'red',
-            data: [8, 12]
-          }
-        ]
-      }
+      chart: null,
     }
   },
 
   methods: {
-    getRandomInt () {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+    updateData(chart) {
+      chart.data.labels = this.graphicData.labels;
+      chart.data.datasets[0].data = this.graphicData.data;
+      chart.data.datasets[0].backgroundColor = this.graphicData.colors;
+      chart.data.datasets[0].borderColor = this.graphicData.borderColors;
+
+      this.chart.update();
+    },
+
+    createChart() {
+      this.chart = new Chart(document.getElementById('grouped-stays-chart'), {
+        type: 'bar',
+        data: {
+          labels: this.graphicData.labels,
+          datasets: [{
+            label: 'Novas estadias',
+            data: this.graphicData.data,
+            backgroundColor: this.graphicData.colors,
+            borderColor: this.graphicData.borderColors,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              display: true,
+              ticks: {
+                beginAtZero: true,
+                min: 0
+              }
+            }]
+          }
+        }
+      })
     }
   }
 }

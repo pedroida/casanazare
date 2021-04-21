@@ -50,7 +50,7 @@ export default {
   },
 
   watch: {
-    filterBy() {
+    filterBy(filter) {
       this.updateData();
     }
   },
@@ -67,7 +67,7 @@ export default {
   data() {
     return {
       filterBy: 'month',
-      selectedDate: null,
+      selectedDate: new Date().toLocaleDateString(),
     }
   },
 

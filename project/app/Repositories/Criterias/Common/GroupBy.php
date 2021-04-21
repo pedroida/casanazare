@@ -16,6 +16,6 @@ class GroupBy extends Criteria
 
     public function apply($queryBuilder, Repository $repository)
     {
-        return $queryBuilder->groupBy($this->column);
+        return $queryBuilder->groupBy(...$this->column);
     }
 }

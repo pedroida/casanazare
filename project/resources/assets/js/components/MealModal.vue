@@ -11,7 +11,7 @@
 
           <div class="row">
 
-            <div class="col-md-6 col-12">
+            <div class="col-md-8 col-12">
              <div v-if="!editingMeal" class="form-group">
                <label for="day">Dia</label>
                <datepicker
@@ -32,7 +32,7 @@
               </div>
             </div>
 
-            <div class="col-md-6 col-12">
+            <div class="col-md-4 col-12">
 
               <div class="form-group">
                 <label for="breakfasts">Cafés da manhã</label>
@@ -129,7 +129,13 @@
               $(this.$refs.mealModal).modal('toggle');
             });
         } else {
-          axios.post(this.storeUrl, this.meal)
+          const {day, breakfasts, lunches, dinners} = this.meal;
+          axios.post(this.storeUrl, {
+            day: day.toLocaleDateString(),
+            breakfasts,
+            lunches,
+            dinners
+          })
             .then((response) => {
               this.flashMessage(response.data.type, response.data.message);
               this.resetMeal();

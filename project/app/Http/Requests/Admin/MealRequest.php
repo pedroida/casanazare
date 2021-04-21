@@ -31,7 +31,7 @@ class MealRequest extends FormRequest
         ];
 
         if ($this->method() == 'POST') {
-            $rules['day'] .= "|date|unique:meals";
+            $rules['day'] .= "|date_format:d/m/Y|unique:meals";
         }
 
         return $rules;

@@ -20,6 +20,8 @@ class WhereBetween extends Criteria
 
     public function apply($queryBuilder, Repository $repository)
     {
-        return $queryBuilder->whereBetween($this->field, [$this->from, $this->to]);
+        return $queryBuilder->where(function ($query) {
+            return $query->whereBetween($this->field, [$this->from, $this->to]);
+        });
     }
 }
