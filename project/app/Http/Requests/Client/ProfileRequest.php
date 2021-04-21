@@ -23,7 +23,6 @@ class ProfileRequest extends FormRequest
      */
     public function rules()
     {
-        $userId = current_user()->id;
         $rules = [
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users,email',
@@ -31,6 +30,7 @@ class ProfileRequest extends FormRequest
         ];
 
         if (in_array($this->method(), ['PUT', 'PATCH'])) {
+            $userId = current_user()->id;
             $rules['email'] .= ",{$userId}";
             $rules['password'] = data_get($this, 'password', '') ? $rules['password'] : '';
         }
