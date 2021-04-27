@@ -17,5 +17,13 @@ class Unit extends Model
 
     protected $fillable = ['name'];
 
-    
+    public function setNameAttribute($value)
+    {
+        return $this->attributes['name'] = $value;
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->attributes['name'];
+    }
 }

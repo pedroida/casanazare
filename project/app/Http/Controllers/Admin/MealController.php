@@ -19,7 +19,6 @@ class MealController extends Controller
         $this->middleware('permission:meals edit')->only(['edit', 'update']);
         $this->middleware('permission:meals show')->only(['show']);
         $this->middleware('permission:meals list')->only(['index']);
-        $this->middleware('permission:meals delete')->only(['destroy']);
     }
 
     public function index()
@@ -34,7 +33,7 @@ class MealController extends Controller
         $this->repository->create($data);
 
         $message = _m('common.success.create');
-        return $this->chooseReturn('success', $message, 'admin.origens.index');
+        return $this->chooseReturn('success', $message);
     }
 
     public function update(MealRequest $request, $id)
@@ -44,17 +43,7 @@ class MealController extends Controller
         $this->repository->update($id, $data);
 
         $message = _m('common.success.update');
-        return $this->chooseReturn('success', $message, 'admin.origens.index');
-    }
-
-    public function destroy($id)
-    {
-        try {
-            $this->repository->delete($id);
-            return $this->chooseReturn('success', _m('common.success.destroy'));
-        } catch (\Exception $e) {
-            return $this->chooseReturn('error', _m('common.error.destroy'));
-        }
+        return $this->chooseReturn('success', $message);
     }
 
     public function getPagination($pagination)

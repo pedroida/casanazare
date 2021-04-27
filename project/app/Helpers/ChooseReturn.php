@@ -58,7 +58,7 @@ class ChooseReturn implements Responsable
      */
     public function setType($type)
     {
-        if (! in_array($type, ['success', 'error', 'info', 'warning'])) {
+        if (!in_array($type, ['success', 'error', 'info', 'warning'])) {
             throw new \InvalidArgumentException("Invalid response type [{$type}]", 500);
         }
 
@@ -106,21 +106,17 @@ class ChooseReturn implements Responsable
      */
     public function build()
     {
-        if (\Request::ajax()) {
-            return $this->ajaxResponse();
-        }
-
         if ($this->route) {
             return $this->redirectResponse();
         }
 
-        throw new \BadMethodCallException('Redirect without route.', 500);
+        return $this->ajaxResponse();
     }
 
     /**
      * Create an HTTP response that represents the object.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function toResponse($request)

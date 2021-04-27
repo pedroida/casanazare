@@ -24,6 +24,12 @@ return [
         ]
     ],
 
+    'client' => [
+        'error' => [
+            'has_stay' => 'O acolhido ainda possui hospedagem em aberto',
+        ]
+    ],
+
     'stays' => [
         'import' => [
             'success' => 'A importação está sendo realizada em segundo plano'

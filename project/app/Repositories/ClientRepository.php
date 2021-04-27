@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\ClientHasOpenedStayException;
 use App\Models\Client;
 
 class ClientRepository extends Repository
@@ -18,5 +19,13 @@ class ClientRepository extends Repository
             ->whereDoesntHave('stays', function ($query) {
                 return $query->whereNull('departure_date');
             })->get();
+    }
+
+    public function delete($user)
+    {
+        if($user->stays->firstWhere('departure_date', null))
+            throw new ClientHasOpenedStayException();
+
+        return parent::delete($user);
     }
 }

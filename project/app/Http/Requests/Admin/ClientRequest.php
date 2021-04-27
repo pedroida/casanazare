@@ -23,7 +23,7 @@ class ClientRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
+        return [
             'name' => 'required|max:255',
             'rg' => 'required|size:12',
             'date_of_birth' => 'required|date_format:"d/m/Y"|before:today',
@@ -31,7 +31,5 @@ class ClientRequest extends FormRequest
             'phone_two' => 'required|min:14',
             'city_id' => 'required|exists:cities,id',
         ];
-
-        return $rules;
     }
 }

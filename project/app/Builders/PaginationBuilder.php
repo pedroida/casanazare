@@ -2,6 +2,7 @@
 
 namespace App\Builders;
 
+use App\Repositories\BaseRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Http\Resources\Json\Resource;
 use Illuminate\Contracts\Support\Responsable;

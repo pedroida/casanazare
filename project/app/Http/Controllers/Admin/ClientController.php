@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Builders\PaginationBuilder;
+use App\Exceptions\ClientHasOpenedStayException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ClientRequest;
 use App\Http\Resources\Admin\ClientResource;
@@ -91,6 +92,8 @@ class ClientController extends Controller
         try {
             $this->repository->delete($user);
             return $this->chooseReturn('success', _m('common.success.destroy'));
+        } catch (ClientHasOpenedStayException $e) {
+            return $this->chooseReturn('error', _m('client.error.has_stay'));
         } catch (\Exception $e) {
             return $this->chooseReturn('error', _m('common.error.destroy'));
         }

@@ -120,7 +120,7 @@
       submitMeal() {
         if (this.editingMeal) {
           let mealData = this.formatBeforeSubmit();
-          axios.put(this.updateUrl.replace(':id', this.meal.id), mealData)
+          return axios.put(this.meal.links.edit, mealData)
             .then((response) => {
               this.flashMessage(response.data.type, response.data.message);
 
@@ -130,7 +130,7 @@
             });
         } else {
           const {day, breakfasts, lunches, dinners} = this.meal;
-          axios.post(this.storeUrl, {
+          return axios.post(this.storeUrl, {
             day: day.toLocaleDateString(),
             breakfasts,
             lunches,
