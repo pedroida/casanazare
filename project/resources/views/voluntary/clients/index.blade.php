@@ -62,6 +62,8 @@
                             </tbody>
                         </table>
                     </div>
+
+                    @include('shared.pagination')
                 </div>
             </div>
         </div>

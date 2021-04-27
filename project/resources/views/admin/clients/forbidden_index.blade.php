@@ -45,6 +45,7 @@
                             </template>
                             </tbody>
                         </table>
+                        @include('shared.pagination')
                     </div>
                 </div>
             </div>

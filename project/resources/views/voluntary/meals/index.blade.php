@@ -69,6 +69,8 @@
                         </div>
 
                     </div>
+
+                    @include('shared.pagination')
                 </div>
             </div>
         </div>
