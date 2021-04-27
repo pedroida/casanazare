@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __('headings.client.forbidden_index'))
+@section('title', __('headings.voluntary.forbidden_index'))
 
 @section('page-header')
     <h1>

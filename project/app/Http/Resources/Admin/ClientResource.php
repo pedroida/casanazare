@@ -18,23 +18,23 @@ class ClientResource extends Resource
             'created_at' => format_date($this->created_at),
             'links' => [
                 'edit' => $this->when(
-                    $user->can('users edit client'),
+                    $user->can('clients edit'),
                     route('admin.acolhidos.edit', $this->id)
                 ),
                 'show' => $this->when(
-                    $user->can('users show client'),
+                    $user->can('clients show'),
                     route('admin.acolhidos.show', $this->id)
                 ),
                 'destroy' => $this->when(
-                    $user->can('users delete client'),
+                    $user->can('clients delete'),
                     route('admin.acolhidos.destroy', $this->id)
                 ),
                 'forbid' => $this->when(
-                    $user->can('users forbid client') && !$this->forbidden,
+                    $user->can('clients forbid') && !$this->forbidden,
                     route('ajax.admin.toggle.forbidden', $this->resource)
                 ),
                 'allow' => $this->when(
-                    $user->can('users allow client') && $this->forbidden,
+                    $user->can('clients allow') && $this->forbidden,
                     route('ajax.admin.toggle.forbidden', $this->resource)
                 ),
             ],

@@ -7,7 +7,7 @@ return [
 
     'profile' => [
         'edit admin',
-        'edit client',
+        'edit voluntary',
     ],
 
     'users' => [
@@ -16,18 +16,21 @@ return [
         'show admin',
         'list admin',
         'delete admin',
-        'create client',
-        'edit client',
-        'show client',
-        'list client',
-        'delete client',
-        'forbid client',
-        'allow client',
         'create voluntary',
         'edit voluntary',
         'show voluntary',
         'list voluntary',
         'delete voluntary',
+    ],
+
+    'clients' => [
+        'create',
+        'edit',
+        'show',
+        'list',
+        'delete',
+        'forbid',
+        'allow',
     ],
 
     'sources' => [

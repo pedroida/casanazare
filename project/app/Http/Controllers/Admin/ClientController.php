@@ -20,11 +20,11 @@ class ClientController extends Controller
         $this->repository = new ClientRepository();
         $this->resource = ClientResource::class;
 
-        $this->middleware('permission:users create client')->only(['create', 'store']);
-        $this->middleware('permission:users edit client')->only(['edit', 'update']);
-        $this->middleware('permission:users show client')->only(['show']);
-        $this->middleware('permission:users list client')->only(['index']);
-        $this->middleware('permission:users delete client')->only(['destroy']);
+        $this->middleware('permission:clients create')->only(['create', 'store']);
+        $this->middleware('permission:clients edit')->only(['edit', 'update']);
+        $this->middleware('permission:clients show')->only(['show']);
+        $this->middleware('permission:clients list')->only(['index']);
+        $this->middleware('permission:clients delete')->only(['destroy']);
     }
 
     public function index()

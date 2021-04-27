@@ -2,7 +2,7 @@
 
 /**
  * Unauthenticated routes for Api
- * Prefix 'api/v1/client'
+ * Prefix 'api/v1/voluntary'
  * Namespace 'App\Http\Controllers\Api\v1\Client'
  */
 

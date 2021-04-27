@@ -29,7 +29,7 @@
         </li>
     @endif
 
-    @if(current_user()->can('users list client'))
+    @if(current_user()->can('users list voluntary'))
         <li class="{{ is_active('admin.acolhidos.index') }}">
             <a class="nav-link" href="{{ route('admin.acolhidos.index') }}" data-toggle="tooltip" data-placement="right"
                title="@lang('headings.common.clients')">

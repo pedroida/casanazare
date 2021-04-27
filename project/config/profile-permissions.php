@@ -10,18 +10,21 @@ return [
             'show admin',
             'list admin',
             'delete admin',
-            'create client',
-            'edit client',
-            'show client',
-            'list client',
-            'delete client',
-            'forbid client',
-            'allow client',
             'create voluntary',
             'edit voluntary',
             'show voluntary',
             'list voluntary',
             'delete voluntary',
+        ],
+
+        'clients' => [
+            'create',
+            'edit',
+            'show',
+            'list',
+            'delete',
+            'forbid',
+            'allow',
         ],
 
         'sources' => [
@@ -74,7 +77,7 @@ return [
 
     UserRolesEnum::VOLUNTARY => [
         'profile' => [
-            'edit client',
+            'edit voluntary',
         ],
 
         'stays' => [
@@ -89,6 +92,15 @@ return [
             'edit',
             'list',
             'delete',
+        ],
+        'clients' => [
+            'create',
+            'edit',
+            'show',
+            'list',
+            'delete',
+            'forbid',
+            'allow',
         ],
     ],
 ];

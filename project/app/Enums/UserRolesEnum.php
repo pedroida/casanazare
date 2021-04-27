@@ -13,5 +13,5 @@ class UserRolesEnum extends Enum
 {
     public const ADMIN = 'admin';
     public const VOLUNTARY = 'voluntary';
-    public const CLIENT = 'client';
+    public const CLIENT = 'voluntary';
 }

@@ -40,7 +40,7 @@ return [
         'city-state' => 'Cidade/Estado',
         'entry_date' => 'Data de entrada',
         'departure_date' => 'Data de saída',
-        'client' => 'Acolhido',
+        'voluntary' => 'Acolhido',
         'source' => 'Origem',
         'responsible' => 'Responsável',
         'comments' => 'Observações',

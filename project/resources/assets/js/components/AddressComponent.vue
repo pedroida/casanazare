@@ -142,6 +142,9 @@
 
       resource: {
         default: [],
+      },
+      isAdmin: {
+        type: Boolean,
       }
     },
 
@@ -299,11 +302,15 @@
       },
 
       getStates() {
-        return axios.get(`/admin/address/states`);
+        const route = this.isAdmin ? '/admin/address/states' : '/voluntario/address/states';
+        return axios.get(route);
       },
 
       getCities() {
-        return axios.get(`/admin/address/${this.stateSelected}/cities`);
+        const route = this.isAdmin
+          ? `/admin/address/${this.stateSelected}/cities`
+          : `/voluntario/address/${this.stateSelected}/cities`;
+        return axios.get(route);
       }
     }
   }

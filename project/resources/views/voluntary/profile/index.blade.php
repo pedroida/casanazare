@@ -19,10 +19,10 @@
 
 @section('content')
     <div class="card card-secondary">
-        <form class="form-horizontal" method="POST" action="{{ route('client.profile.update') }}">
+        <form class="form-horizontal" method="POST" action="{{ route('voluntary.profile.update') }}">
             @method('PUT')
             <div class="card-body pb-0">
-                @include('client.profile._partials.form')
+                @include('voluntary.profile._partials.form')
             </div>
             <div class="card-footer">
                 <div class="text-center">

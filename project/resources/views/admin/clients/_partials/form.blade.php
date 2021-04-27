@@ -96,6 +96,12 @@
     </div>
 
     <div class="col-6">
-        <address-component :resource='@json($client)' :errors-bag="{{ $errors }}"  :old='{{ json_encode(old()) }}'></address-component>
+        <address-component
+                :is-admin='@json(current_user()->hasRole(\App\Enums\UserRolesEnum::ADMIN))'
+                :resource='@json($client)'
+                :errors-bag="{{ $errors }}"
+                :old='{{ json_encode(old()) }}'>
+
+        </address-component>
     </div>
 </div>

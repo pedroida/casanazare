@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\Voluntary;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\ProfileRequest;
@@ -11,13 +11,13 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->repository = new UserRepository();
-        $this->middleware('permission:profile edit client')->only(['edit', 'update']);
+        $this->middleware('permission:profile edit voluntary')->only(['edit', 'update']);
     }
 
     public function index()
     {
         $user = current_user();
-        return view('client.profile.index', compact('user'));
+        return view('voluntary.profile.index', compact('user'));
     }
 
     public function update(ProfileRequest $request)
@@ -28,6 +28,6 @@ class ProfileController extends Controller
         $this->repository->updateUser($user, $userData);
 
         $message = _m('common.success.update');
-        return $this->chooseReturn('success', $message, 'client.profile');
+        return $this->chooseReturn('success', $message, 'voluntary.profile');
     }
 }

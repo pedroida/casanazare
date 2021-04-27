@@ -14,7 +14,7 @@ return [
         'index' => 'Usuários Administradores'
     ],
 
-    'users-client' => [
+    'users-voluntary' => [
         'index' => 'Usuários Clientes'
     ],
 

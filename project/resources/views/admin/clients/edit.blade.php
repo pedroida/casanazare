@@ -4,7 +4,7 @@
 @section('page-header')
     <h1>
         <i class="fas fa-user-plus fa-fw mr-2 text-muted"></i>
-        @lang('headings.client-users.edit')
+        @lang('headings.voluntary-users.edit')
     </h1>
     <breadcrumb>
         <breadcrumb-item href="{{ route('home') }}">

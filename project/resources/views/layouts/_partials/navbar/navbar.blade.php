@@ -21,7 +21,7 @@
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Ações</div>
                 @php
-                    $profileRouteName = (current_user()->hasRole(\App\Enums\UserRolesEnum::ADMIN) ? 'admin.profile' : 'client.profile')
+                    $profileRouteName = (current_user()->hasRole(\App\Enums\UserRolesEnum::ADMIN) ? 'admin.profile' : 'voluntary.profile')
                 @endphp
                 <a href="{{ route($profileRouteName) }}"
                    class="dropdown-item has-icon {{ is_active($profileRouteName) }}">
