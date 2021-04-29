@@ -15,4 +15,8 @@ class Source extends Model
 
     protected $fillable = ['name'];
 
+    public function getNameAttribute()
+    {
+        return $this->attributes['name'];
+    }
 }

@@ -14,9 +14,9 @@ Route::get('profile', 'ProfileController@index')->name('profile');
 Route::put('profile', 'ProfileController@update')->name('profile.update');
 
 /** System Routes */
-Route::resource('administradores', 'AdminUserController', ['parameters' => ['admin-users' => 'id']]);
-Route::resource('voluntarios', 'VoluntaryUserController', ['parameters' => ['voluntary-users' => 'id']]);
-Route::resource('doacoes', 'DonationController')->parameters(['doacoes' => 'donation']);
+Route::resource('administradores', 'AdminUserController', ['parameters' => ['administradores' => 'id']]);
+Route::resource('voluntarios', 'VoluntaryUserController', ['parameters' => ['voluntarios' => 'id']]);
+Route::resource('doacoes', 'DonationController')->parameters(['doacoes' => 'donation'])->except(['show']);
 Route::resource('categorias', 'CategoryController')
     ->parameters(['categorias' => 'category'])
     ->except(['show']);
@@ -24,11 +24,11 @@ Route::resource('unidades', 'UnitController')
     ->parameters(['unidades' => 'unit'])
     ->except(['show']);
 Route::resource('acolhidos', 'ClientController');
-Route::resource('estadias', 'StayController');
+Route::resource('estadias', 'StayController')->except(['show']);
 Route::post('estadias/planilha', 'StayController@import')->name('estadias.import-spreadsheet');
 Route::resource('refeicoes', 'MealController')->except(['create', 'edit', 'show']);
 
-Route::resource('origens', 'SourceController', ['parameters' => ['origens' => 'source']]);
+Route::resource('origens', 'SourceController', ['parameters' => ['origens' => 'source']])->except(['show']);
 
 Route::get('acolhidos-proibidos', 'ClientController@forbidden')->name('acolhidos.forbidden');
 

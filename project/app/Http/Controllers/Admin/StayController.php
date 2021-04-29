@@ -76,11 +76,6 @@ class StayController extends Controller
         return $this->chooseReturn('success', $message, 'admin.estadias.index');
     }
 
-    public function show(Source $source)
-    {
-        return view('admin.sources.show', compact('source'));
-    }
-
     public function destroy($id)
     {
         try {
@@ -95,7 +90,7 @@ class StayController extends Controller
     {
         $spreadsheet = $request->file('file');
 
-        $path = FileService::storagedRequestFile($spreadsheet, 'spreadsheets/import');
+        $path = FileService::storeRequestFile($spreadsheet, 'spreadsheets/import');
         ImportSpreadsheet::dispatch($path);
 
         return $this->chooseReturn('success', _m('stays.import.success'), 'admin.estadias.index');

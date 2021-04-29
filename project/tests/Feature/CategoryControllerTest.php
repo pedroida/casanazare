@@ -57,19 +57,31 @@ class CategoryControllerTest extends TestCaseFeature
      *
      * @return void
      */
-    public function testShouldCreateUnit()
+    public function testShouldShowCreateCategory()
     {
-        $category = factory(Category::class, 1)->make()->toArray();
+        $response = $this->get('/admin/categorias/create');
 
-        $response = $this->post('/admin/categorias', $category);
-        $response->assertStatus(302);
+        $response->assertSee('Categoria :. Novo');
     }
 
     /**
      *
      * @return void
      */
-    public function testShouldNotCreateUnit()
+    public function testShouldCreateCategory()
+    {
+        $category = factory(Category::class)->make()->toArray();
+
+        $response = $this->post('/admin/categorias', $category);
+        $response->assertStatus(302);
+        $response->assertSessionHas('success');
+    }
+
+    /**
+     *
+     * @return void
+     */
+    public function testShouldNotCreateCategory()
     {
         $category = ['name' => ''];
 
@@ -84,12 +96,26 @@ class CategoryControllerTest extends TestCaseFeature
      *
      * @return void
      */
+    public function testShouldShowEditCategory()
+    {
+        $category = factory(Category::class)->create();
+
+        $response = $this->get('/admin/categorias/' . $category->id . '/edit');
+
+        $response->assertSee($category->name);
+    }
+
+    /**
+     *
+     * @return void
+     */
     public function testShouldEditUnit()
     {
         $category = factory(Category::class)->create();
 
         $response = $this->put("/admin/categorias/{$category->id}", ['name' => 'new name']);
         $response->assertStatus(302);
+        $response->assertSessionHas('success');
     }
 
     /**

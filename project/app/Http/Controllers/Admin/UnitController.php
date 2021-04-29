@@ -28,7 +28,7 @@ class UnitController extends Controller
 
     public function create()
     {
-        $unit = new Unit();
+        $unit = new Unit(['name' => '']);
 
         return view('admin.units.create', compact('unit'));
     }

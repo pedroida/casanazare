@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Client::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'rg' => $faker->randomNumber(9),
+        'rg' => $faker->numerify('############'),
         'date_of_birth' => $faker->date('d/m/Y', now()->subYears(18)->year),
         'phone_one' => $faker->numerify('##################'),
         'phone_two' => $faker->numerify('##################'),

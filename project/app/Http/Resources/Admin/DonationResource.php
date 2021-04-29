@@ -22,10 +22,6 @@ class DonationResource extends Resource
                     $user->can('donations edit'),
                     route('admin.doacoes.edit', $this->resource)
                 ),
-                'show' => $this->when(
-                    $user->can('donations show'),
-                    route('admin.doacoes.show', $this->resource)
-                ),
                 'destroy' => $this->when(
                     $user->can('donations delete'),
                     route('admin.doacoes.destroy', $this->resource)

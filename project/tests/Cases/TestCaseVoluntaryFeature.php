@@ -7,9 +7,8 @@ use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Auth;
 use Tests\CreatesApplication;
-use Tests\RefreshDatabase;
 
-abstract class TestCaseUnit extends BaseTestCase
+abstract class TestCaseVoluntaryFeature extends BaseTestCase
 {
     use CreatesApplication;
 
@@ -22,13 +21,18 @@ abstract class TestCaseUnit extends BaseTestCase
         $this->withHeaders([
             'X-CSRF-TOKEN' => csrf_token(),
         ]);
+
+        $voluntary = User::find(2);
+
+        $this->actingAs($voluntary);
+        Auth::login($voluntary);
     }
 
     private function setupDatabase()
     {
-        $this->artisan('migrate:fresh');
-        $this->artisan('db:seed');
-        $this->artisan('upgrade --dev');
-        $this->app[Kernel::class]->setArtisan(null);
+            $this->artisan('migrate:fresh');
+            $this->artisan('db:seed');
+            $this->artisan('upgrade --dev');
+            $this->app[Kernel::class]->setArtisan(null);
     }
 }

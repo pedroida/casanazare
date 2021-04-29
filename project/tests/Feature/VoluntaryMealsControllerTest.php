@@ -6,8 +6,9 @@ use App\Models\Meal;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Tests\Cases\TestCaseFeature;
+use Tests\Cases\TestCaseVoluntaryFeature;
 
-class MealsControllerTest extends TestCaseFeature
+class VoluntaryMealsControllerTest extends TestCaseVoluntaryFeature
 {
     /**
      *
@@ -15,7 +16,7 @@ class MealsControllerTest extends TestCaseFeature
      */
     public function testShouldSeeIndex()
     {
-        $response = $this->get('/admin/refeicoes');
+        $response = $this->get('/voluntario/refeicoes');
 
         $response->assertStatus(200);
     }
@@ -29,7 +30,7 @@ class MealsControllerTest extends TestCaseFeature
         setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         $meal = factory(Meal::class)->create();
 
-        $response = $this->getJson('/pagination/admin/meals');
+        $response = $this->getJson('/pagination/voluntary/meals');
         $response->assertJson([
             'data' => [
                 [
@@ -53,7 +54,7 @@ class MealsControllerTest extends TestCaseFeature
         setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         $meal = factory(Meal::class)->create();
 
-        $route = route('admin.pagination.meals', ['day' => $meal->day->format('d/m/Y')]);
+        $route = route('voluntary.pagination.meals', ['day' => $meal->day->format('d/m/Y')]);
 
         $response = $this->getJson($route);
         $response->assertJson([
@@ -74,27 +75,12 @@ class MealsControllerTest extends TestCaseFeature
      *
      * @return void
      */
-    public function testShouldSeeMealsAsVoluntary()
-    {
-        $voluntary = User::query()->firstWhere('name', 'Voluntário');
-        $this->actingAs($voluntary);
-        Auth::login($voluntary);
-
-        $responseIndex = $this->get('/voluntario/refeicoes');
-
-        $responseIndex->assertStatus(200);
-    }
-
-    /**
-     *
-     * @return void
-     */
     public function testShouldCreateMeal()
     {
         $meal = factory(Meal::class)->make()->toArray();
         $meal['day'] = now()->format('d/m/Y');
 
-        $response = $this->postJson('/admin/refeicoes', $meal);
+        $response = $this->postJson('/voluntario/refeicoes', $meal);
         $response->assertStatus(200);
     }
 
@@ -106,7 +92,7 @@ class MealsControllerTest extends TestCaseFeature
     {
         $meal = factory(Meal::class)->state('empty')->make()->toArray();
 
-        $response = $this->post('/admin/refeicoes', $meal);
+        $response = $this->post('/voluntario/refeicoes', $meal);
 
         $response->assertSessionHasErrors([
             'day' => 'Campo obrigatório.',
@@ -124,7 +110,7 @@ class MealsControllerTest extends TestCaseFeature
     {
         $meal = factory(Meal::class)->create();
 
-        $response = $this->putJson("/admin/refeicoes/{$meal->id}", [
+        $response = $this->putJson("/voluntario/refeicoes/{$meal->id}", [
             'day' => $meal->day->format('d/m/Y'),
             'breakfasts' => 1,
             'lunches' => 2,
@@ -143,7 +129,7 @@ class MealsControllerTest extends TestCaseFeature
         $meal = factory(Meal::class)->create();
         $secondMeal = factory(Meal::class)->make()->toArray();
         $secondMeal['day'] = $meal->day->format('d/m/Y');
-        $response = $this->postJson("/admin/refeicoes", $secondMeal);
+        $response = $this->postJson("/voluntario/refeicoes", $secondMeal);
 
         $response->assertJsonValidationErrors([
             'day' => 'O valor informado para o campo dia já está em uso.'

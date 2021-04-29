@@ -41,7 +41,7 @@ class SourceControllerTest extends TestCaseFeature
      *
      * @return void
      */
-    public function testShouldNotSeeCategoriesAsVoluntary()
+    public function testShouldNotSeeSourcesAsVoluntary()
     {
         $voluntary = User::query()->firstWhere('name', 'Voluntário');
         $this->actingAs($voluntary);
@@ -58,19 +58,31 @@ class SourceControllerTest extends TestCaseFeature
      *
      * @return void
      */
-    public function testShouldCreateUnit()
+    public function testShouldShowCreateSource()
     {
-        $source = factory(Source::class, 1)->make()->toArray();
+        $response = $this->get('/admin/origens/create');
 
-        $response = $this->post('/admin/origens', $source);
-        $response->assertStatus(302);
+        $response->assertSee('Origem :. Novo');
     }
 
     /**
      *
      * @return void
      */
-    public function testShouldNotCreateUnit()
+    public function testShouldCreateSource()
+    {
+        $source = factory(Source::class)->make()->toArray();
+
+        $response = $this->post('/admin/origens', $source);
+        $response->assertStatus(302);
+        $response->assertSessionHas('success');
+    }
+
+    /**
+     *
+     * @return void
+     */
+    public function testShouldNotCreateSource()
     {
         $source = ['name' => ''];
 
@@ -85,12 +97,26 @@ class SourceControllerTest extends TestCaseFeature
      *
      * @return void
      */
-    public function testShouldEditUnit()
+    public function testShouldShowEditSource()
+    {
+        $source = factory(Source::class)->create();
+
+        $response = $this->get('/admin/origens/' . $source->id . '/edit');
+
+        $response->assertSee($source->name);
+    }
+
+    /**
+     *
+     * @return void
+     */
+    public function testShouldEditSource()
     {
         $source = factory(Source::class)->create();
 
         $response = $this->put("/admin/origens/{$source->id}", ['name' => 'new name']);
         $response->assertStatus(302);
+        $response->assertSessionHas('success');
     }
 
     /**

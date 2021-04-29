@@ -11,7 +11,7 @@ class StayResource extends Resource
         $user = current_user();
 
         return [
-            'client_name' => $this->client->name,
+            'client_name' => $this->client->name . ' (' . $this->client->years_old . ' anos)',
             'source_name' => $this->source->name,
             'created_at' => format_date($this->created_at),
             'responsible_name' => optional($this->responsible)->name ?? 'Não definido',
@@ -22,10 +22,6 @@ class StayResource extends Resource
                 'edit' => $this->when(
                     $user->can('stays edit'),
                     route('admin.estadias.edit', $this->resource)
-                ),
-                'show' => $this->when(
-                    $user->can('stays show'),
-                    route('admin.estadias.show', $this->resource)
                 ),
                 'destroy' => $this->when(
                     $user->can('stays delete'),

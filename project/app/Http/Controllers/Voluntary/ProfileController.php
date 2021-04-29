@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Voluntary;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Client\ProfileRequest;
+use App\Http\Requests\Voluntary\ProfileRequest;
 use App\Repositories\UserRepository;
 
 class ProfileController extends Controller

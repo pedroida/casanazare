@@ -8,11 +8,6 @@ use App\Services\DashboardService;
 
 class DashboardController extends Controller
 {
-    public function index()
-    {
-        return view('voluntary.dashboard.index');
-    }
-
     public function getData(DashboardRequest $request)
     {
         $requestData = $request->all(['type', 'date']);

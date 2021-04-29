@@ -29,7 +29,7 @@ class CategoryController extends Controller
     public function create()
     {
         $category = new Category();
-
+        $category['name'] = '';
         return view('admin.categories.create', compact('category'));
     }
 

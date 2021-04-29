@@ -18,6 +18,12 @@ return [
         ],
     ],
 
+    'admin' => [
+        'error' => [
+            'self_delete' => 'Não é possível remover o usuário corrente.'
+        ]
+    ],
+
     'auth' => [
         'success' => [
             'reset_password' => 'Nova senha cadastrada com sucesso!',

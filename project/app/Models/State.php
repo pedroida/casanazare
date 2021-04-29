@@ -15,4 +15,14 @@ class State extends Model
     {
         return $this->hasMany(City::class);
     }
+
+    public function getNameAttribute()
+    {
+        return $this->attributes['name'];
+    }
+
+    public function getAbbrAttribute()
+    {
+        return $this->attributes['abbr'];
+    }
 }

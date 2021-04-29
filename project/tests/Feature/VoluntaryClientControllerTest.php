@@ -8,8 +8,9 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Tests\Cases\TestCaseFeature;
+use Tests\Cases\TestCaseVoluntaryFeature;
 
-class ClientControllerTest extends TestCaseFeature
+class VoluntaryClientControllerTest extends TestCaseVoluntaryFeature
 {
     /**
      * Should see index.
@@ -18,7 +19,7 @@ class ClientControllerTest extends TestCaseFeature
      */
     public function testShouldSeeIndex()
     {
-        $response = $this->get('/admin/acolhidos');
+        $response = $this->get('/voluntario/acolhidos');
 
         $response->assertStatus(200);
     }
@@ -30,7 +31,7 @@ class ClientControllerTest extends TestCaseFeature
      */
     public function testShouldSeeForbiddenIndex()
     {
-        $response = $this->get('/admin/acolhidos-proibidos');
+        $response = $this->get('/voluntario/acolhidos-proibidos');
 
         $response->assertStatus(200);
     }
@@ -43,7 +44,7 @@ class ClientControllerTest extends TestCaseFeature
     {
         $client = factory(Client::class)->create();
 
-        $response = $this->getJson('/pagination/admin/clients');
+        $response = $this->getJson('/pagination/voluntary/clients');
         $response->assertJson([
             'data' => [
                 ['name' => $client->name . ' (' . $client->years_old . ' anos)']
@@ -59,7 +60,7 @@ class ClientControllerTest extends TestCaseFeature
     {
         $client = factory(Client::class)->state('forbidden')->create();
 
-        $response = $this->getJson('/pagination/admin/forbidden-clients');
+        $response = $this->getJson('/pagination/voluntary/forbidden-clients');
         $response->assertJson([
             'data' => [
                 ['name' => $client->name . ' (' . $client->years_old . ' anos)']
@@ -75,7 +76,7 @@ class ClientControllerTest extends TestCaseFeature
     {
         $client = factory(Client::class)->create();
 
-        $response = $this->getJson('/pagination/admin/forbidden-clients');
+        $response = $this->getJson('/pagination/voluntary/forbidden-clients');
         $response->assertJsonMissing([
             'data' => [
                 ['name' => $client->name]
@@ -91,7 +92,7 @@ class ClientControllerTest extends TestCaseFeature
     {
         $client = factory(Client::class)->state('forbidden')->create();
 
-        $response = $this->getJson('/pagination/admin/clients');
+        $response = $this->getJson('/pagination/voluntary/clients');
         $response->assertJsonMissing([
             'data' => [
                 ['name' => $client->name]
@@ -107,7 +108,7 @@ class ClientControllerTest extends TestCaseFeature
     {
         $client = factory(Client::class)->create();
 
-        $response = $this->get('/admin/acolhidos/' . $client->id);
+        $response = $this->get('/voluntario/acolhidos/' . $client->id);
         $response->assertSee($client->name);
     }
 
@@ -118,7 +119,7 @@ class ClientControllerTest extends TestCaseFeature
     public function testShouldToggleForbiddenClient()
     {
         $client = factory(Client::class)->create();
-        $response = $this->postJson("/ajax/admin/client/{$client->id}/toggle-forbidden");
+        $response = $this->postJson("/ajax/voluntary/client/{$client->id}/toggle-forbidden");
 
         $response->assertJson([
             "type" => "success",
@@ -133,7 +134,7 @@ class ClientControllerTest extends TestCaseFeature
     public function testShouldDeleteClient()
     {
         $client = factory(Client::class)->create();
-        $response = $this->delete("/admin/acolhidos/{$client->id}");
+        $response = $this->delete("/voluntario/acolhidos/{$client->id}");
 
         $response->assertJson([
             "type" => "success",
@@ -149,7 +150,7 @@ class ClientControllerTest extends TestCaseFeature
     {
         $stay = factory(Stay::class)->state('without_departure_date')->create();
         $client = $stay->client;
-        $response = $this->delete("/admin/acolhidos/{$client->id}");
+        $response = $this->delete("/voluntario/acolhidos/{$client->id}");
 
         $response->assertJson([
             "type" => "error",
@@ -163,7 +164,7 @@ class ClientControllerTest extends TestCaseFeature
      */
     public function testShouldShowCreateClient()
     {
-        $response = $this->get('/admin/acolhidos/create');
+        $response = $this->get('/voluntario/acolhidos/create');
 
         $response->assertSee('Acolhido :. Novo');
     }
@@ -177,7 +178,7 @@ class ClientControllerTest extends TestCaseFeature
         $client = factory(Client::class)->make()->toArray();
         $client['date_of_birth'] = Carbon::make($client['date_of_birth'])->format('d/m/Y');
 
-        $response = $this->post('/admin/acolhidos', $client);
+        $response = $this->post('/voluntario/acolhidos', $client);
         $response->assertStatus(302);
         $response->assertSessionHas('success');
     }
@@ -189,7 +190,7 @@ class ClientControllerTest extends TestCaseFeature
     public function testShouldNotCreateClient()
     {
         $emptyClient = factory(Client::class)->state('empty')->make()->toArray();
-        $response = $this->post('/admin/acolhidos', $emptyClient);
+        $response = $this->post('/voluntario/acolhidos', $emptyClient);
 
         $response->assertSessionHasErrors([
             'name' => 'Campo obrigatório.',
@@ -209,9 +210,9 @@ class ClientControllerTest extends TestCaseFeature
     {
         $client = factory(Client::class)->create();
 
-        $response = $this->get('/admin/acolhidos/' . $client->id . '/edit');
+        $response = $this->get('/voluntario/acolhidos/' . $client->id . '/edit');
 
-        $response->assertSee($client->name);
+        $response->assertSee($client->birth_date);
     }
 
     /**
@@ -224,7 +225,7 @@ class ClientControllerTest extends TestCaseFeature
         $clientNewData = factory(Client::class)->make()->toArray();
         $clientNewData['date_of_birth'] = Carbon::make($clientNewData['date_of_birth'])->format('d/m/Y');
 
-        $response = $this->put("/admin/acolhidos/{$client->id}", $clientNewData);
+        $response = $this->put("/voluntario/acolhidos/{$client->id}", $clientNewData);
         $response->assertStatus(302);
         $response->assertSessionHas('success');
     }
@@ -238,7 +239,7 @@ class ClientControllerTest extends TestCaseFeature
         $client = factory(Client::class)->create();
         $clientNewData = factory(Client::class)->state('empty')->make()->toArray();
 
-        $response = $this->put("/admin/acolhidos/{$client->id}", $clientNewData);
+        $response = $this->put("/voluntario/acolhidos/{$client->id}", $clientNewData);
 
         $response->assertSessionHasErrors([
             'name' => 'Campo obrigatório.',

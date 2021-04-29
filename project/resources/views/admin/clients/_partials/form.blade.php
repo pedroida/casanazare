@@ -99,7 +99,7 @@
         <address-component
                 :is-admin='@json(current_user()->hasRole(\App\Enums\UserRolesEnum::ADMIN))'
                 :resource='@json($client)'
-                :errors-bag="{{ $errors }}"
+                :errors-bag="{{ $errors ?? new \Illuminate\Support\ViewErrorBag() }}"
                 :old='{{ json_encode(old()) }}'>
 
         </address-component>

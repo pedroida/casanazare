@@ -13,7 +13,7 @@ use Tests\TestCase;
 class UnitControllerTest extends TestCaseFeature
 {
     /**
-     * Should see units index.
+     * Should see index.
      *
      * @return void
      */
@@ -61,12 +61,24 @@ class UnitControllerTest extends TestCaseFeature
      *
      * @return void
      */
+    public function testShouldShowCreateCategory()
+    {
+        $response = $this->get('/admin/unidades/create');
+
+        $response->assertSee('Unidade :. Novo');
+    }
+
+    /**
+     *
+     * @return void
+     */
     public function testShouldCreateUnit()
     {
-        $unitData = factory(Unit::class, 1)->make()->toArray();
+        $unitData = factory(Unit::class)->make()->toArray();
 
         $response = $this->post('/admin/unidades', $unitData);
         $response->assertStatus(302);
+        $response->assertSessionHas('success');
     }
 
     /**
@@ -88,12 +100,26 @@ class UnitControllerTest extends TestCaseFeature
      *
      * @return void
      */
+    public function testShouldShowEditCategory()
+    {
+        $unit = factory(Unit::class)->create();
+
+        $response = $this->get('/admin/unidades/' . $unit->id . '/edit');
+
+        $response->assertSee($unit->name);
+    }
+
+    /**
+     *
+     * @return void
+     */
     public function testShouldEditUnit()
     {
         $unit = factory(Unit::class)->create();
 
         $response = $this->put("/admin/unidades/{$unit->id}", ['name' => 'new name']);
         $response->assertStatus(302);
+        $response->assertSessionHas('success');
     }
 
     /**

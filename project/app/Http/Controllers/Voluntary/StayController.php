@@ -95,7 +95,7 @@ class StayController extends Controller
     {
         $spreadsheet = $request->file('file');
 
-        $path = FileService::storagedRequestFile($spreadsheet, 'spreadsheets/import');
+        $path = FileService::storeRequestFile($spreadsheet, 'spreadsheets/import');
         ImportSpreadsheet::dispatch($path);
 
         return $this->chooseReturn('success', _m('stays.import.success'), 'voluntary.estadias.index');

@@ -11,7 +11,7 @@ class ClientResource extends Resource
         $user = current_user();
 
         return [
-            'name' => $this->name,
+            'name' => $this->name . ' (' . $this->years_old . ' anos)',
             'rg' => $this->rg,
             'phone_one' => $this->phone_one,
             'date_of_birth' => format_date($this->date_of_birth, 'd/m/Y'),

@@ -10,7 +10,7 @@ class AdminUserResource extends Resource
     {
         $user = current_user();
 
-        return [
+        $fields = [
             'name' => $this->name,
             'email' => $this->email,
             'created_at' => format_date($this->created_at),
@@ -23,11 +23,11 @@ class AdminUserResource extends Resource
                     $user->can('users show admin'),
                     route('admin.administradores.show', $this->id)
                 ),
-                'destroy' => $this->when(
-                    $user->can('users delete admin') && $this->id !== $user->id,
-                    route('admin.administradores.destroy', $this->id)
-                ),
-            ],
+            ]
         ];
+
+        if ($user->can('users delete admin') && $this->id !== $user->id)
+            $fields['links']['destroy'] = route('admin.administradores.destroy', $this->id);
+
     }
 }

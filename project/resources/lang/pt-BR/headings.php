@@ -30,7 +30,7 @@ return [
         'create' => 'Usuário Administrador :. Novo',
     ],
 
-    'voluntary-users' => [
+    'client-users' => [
         'label' => 'Clientes',
         'index' => 'Usuários Clientes',
         'show' => 'Usuário Cliente :. Detalhes',

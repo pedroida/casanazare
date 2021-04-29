@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class FileService
 {
-    public static function storagedRequestFile(UploadedFile $file, string $path, string $disk = 'local'): string
+    public static function storeRequestFile(UploadedFile $file, string $path, string $disk = 'local'): string
     {
         $savedPath = Storage::disk($disk)->putFile($path, $file);
 

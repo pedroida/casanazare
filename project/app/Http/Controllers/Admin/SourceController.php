@@ -60,11 +60,6 @@ class SourceController extends Controller
         return $this->chooseReturn('success', $message, 'admin.origens.index');
     }
 
-    public function show(Source $source)
-    {
-        return view('admin.sources.show', compact('source'));
-    }
-
     public function destroy($id)
     {
         try {

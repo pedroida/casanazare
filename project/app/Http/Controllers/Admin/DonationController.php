@@ -68,11 +68,6 @@ class DonationController extends Controller
         return $this->chooseReturn('success', $message, 'admin.doacoes.index');
     }
 
-    public function show(Donation $source)
-    {
-        return view('admin.sources.show', compact('source'));
-    }
-
     public function destroy($id)
     {
         try {

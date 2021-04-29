@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Category;
 use App\Models\Donation;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Tests\Cases\TestCaseFeature;
 
@@ -62,12 +63,25 @@ class DonationControllerTest extends TestCaseFeature
      *
      * @return void
      */
+    public function testShouldShowCreateDonation()
+    {
+        $response = $this->get('/admin/doacoes/create');
+
+        $response->assertSee('Doação :. Novo');
+    }
+
+    /**
+     *
+     * @return void
+     */
     public function testShouldCreateDonation()
     {
-        $donationData = factory(Donation::class, 1)->make()->toArray();
+        $donationData = factory(Donation::class)->make()->toArray();
+        $donationData['validate'] = Carbon::make($donationData['validate'])->format('d/m/Y');
 
         $response = $this->post('/admin/doacoes', $donationData);
         $response->assertStatus(302);
+        $response->assertSessionHas('success');
     }
 
     /**
@@ -92,13 +106,28 @@ class DonationControllerTest extends TestCaseFeature
      *
      * @return void
      */
+    public function testShouldShowEditDonation()
+    {
+        $donation = factory(Donation::class)->create();
+
+        $response = $this->get('/admin/doacoes/' . $donation->id . '/edit');
+
+        $response->assertSee($donation->name);
+    }
+
+    /**
+     *
+     * @return void
+     */
     public function testShouldEditUnit()
     {
         $donation = factory(Donation::class)->create();
         $newData = factory(Donation::class)->make()->toArray();
+        $newData['validate'] = Carbon::make($newData['validate'])->format('d/m/Y');
 
         $response = $this->put("/admin/doacoes/{$donation->id}", $newData);
         $response->assertStatus(302);
+        $response->assertSessionHas('success');
     }
 
     /**

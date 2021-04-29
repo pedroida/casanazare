@@ -18,10 +18,6 @@ class SourceResource extends Resource
                     $user->can('sources edit'),
                     route('admin.origens.edit', $this->resource)
                 ),
-                'show' => $this->when(
-                    $user->can('sources show'),
-                    route('admin.origens.show', $this->resource)
-                ),
                 'destroy' => $this->when(
                     $user->can('sources delete'),
                     route('admin.origens.destroy', $this->resource)

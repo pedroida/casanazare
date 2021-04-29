@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Enums\UserRolesEnum;
+use App\Exceptions\SelfDeleteException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AdminUserRequest;
 use App\Http\Resources\Admin\AdminUserResource;
@@ -74,6 +75,8 @@ class AdminUserController extends Controller
         try {
             $this->repository->delete($user);
             return $this->chooseReturn('success', _m('common.success.destroy'));
+        } catch (SelfDeleteException $e) {
+            return $this->chooseReturn('error', _m('admin.error.self_delete'));
         } catch (\Exception $e) {
             return $this->chooseReturn('error', _m('common.error.destroy'));
         }
