@@ -9,7 +9,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Donation::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'name' => preg_replace('#[^A-Za-z0-9 ]+#', '', $faker->name),
         'quantity' => $faker->randomFloat(3, 0, 100),
         'validate' => $faker->date('Y-m-d', 'next week'),
         'donation_unit_id' => factory(Unit::class)->create()->id,

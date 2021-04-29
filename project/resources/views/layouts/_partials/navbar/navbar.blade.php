@@ -29,7 +29,7 @@
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item has-icon text-danger" data-toggle="modal" data-target="#logout-modal">
-                    <i class="fas fa-sign-out-alt"></i> Logout
+                    <i class="fas fa-sign-out-alt"></i> Sair
                 </a>
             </div>
         </li>

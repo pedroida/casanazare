@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Unit::class, function (Faker $faker) {
     return [
-        'name' => $faker->name
+        'name' => preg_replace('#[^A-Za-z0-9 ]+#', '', $faker->name)
     ];
 });

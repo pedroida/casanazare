@@ -100,7 +100,7 @@ class UnitControllerTest extends TestCaseFeature
      *
      * @return void
      */
-    public function testShouldShowEditCategory()
+    public function testShouldShowEditUnit()
     {
         $unit = factory(Unit::class)->create();
 

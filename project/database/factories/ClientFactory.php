@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Client::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'name' => preg_replace('#[^A-Za-z0-9 ]+#', '', $faker->name),
         'rg' => $faker->numerify('############'),
         'date_of_birth' => $faker->date('d/m/Y', now()->subYears(18)->year),
         'phone_one' => $faker->numerify('##################'),
