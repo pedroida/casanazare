@@ -12,8 +12,9 @@
           </form>
         </div>
 
-        <div class="modal-footer bg-whitesmoke br">
+        <div class="modal-footer bg-whitesmoke br justify-content-between">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <a :href="exportDefaultUrl" type="button" class="btn btn-info text-white">Exportar exemplo</a>
           <button form="import-spreadsheet-form" type="submit" class="btn btn-primary">Importar</button>
         </div>
 
@@ -35,6 +36,9 @@ export default {
       default: () => 'import-spreadsheet-modal'
     },
     postUrl: {
+      type: String,
+    },
+    exportDefaultUrl: {
       type: String,
     }
   },

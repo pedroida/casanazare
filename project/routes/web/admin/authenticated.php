@@ -26,6 +26,7 @@ Route::resource('unidades', 'UnitController')
 Route::resource('acolhidos', 'ClientController');
 Route::resource('estadias', 'StayController')->except(['show']);
 Route::post('estadias/planilha', 'StayController@import')->name('estadias.import-spreadsheet');
+Route::get('estadias/planilha-padrao', 'StayController@exportDefault')->name('estadias.export-default');
 Route::resource('refeicoes', 'MealController')->except(['create', 'edit', 'show']);
 
 Route::resource('origens', 'SourceController', ['parameters' => ['origens' => 'source']])->except(['show']);

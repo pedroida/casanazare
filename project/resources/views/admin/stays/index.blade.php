@@ -49,6 +49,7 @@
                                 <import-spreadsheet
                                         class="float-right"
                                         post-url="{{ route('admin.estadias.import-spreadsheet') }}"
+                                        export-default-url="{{ route('admin.estadias.export-default') }}"
                                         button-label="@lang('labels.stays.import_spreadsheet')"
                                         input-label="@lang('labels.stays.import_spreadsheet_input_label')">
                                 </import-spreadsheet>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\StayExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StayImportRequest;
 use App\Http\Requests\Admin\StayRequest;
@@ -30,7 +31,7 @@ class StayController extends Controller
         $this->middleware('permission:stays show')->only(['show']);
         $this->middleware('permission:stays list')->only(['index']);
         $this->middleware('permission:stays delete')->only(['destroy']);
-        $this->middleware('permission:stays import')->only(['import']);
+        $this->middleware('permission:stays import')->only(['import', 'exportDefault']);
     }
 
     public function index()
@@ -94,6 +95,11 @@ class StayController extends Controller
         ImportSpreadsheet::dispatch($path);
 
         return $this->chooseReturn('success', _m('stays.import.success'), 'admin.estadias.index');
+    }
+
+    public function exportDefault()
+    {
+        return Excel::download(new StayExport, 'modelo-de-importacao.xlsx');
     }
 
     public function getPagination($pagination)

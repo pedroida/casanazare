@@ -7,7 +7,11 @@
       {{ buttonLabel }}
     </a>
 
-    <import-spreadsheet-modal :inputLabel="inputLabel" :modal-identifier="modalIdentifier" :post-url="postUrl"/>
+    <import-spreadsheet-modal
+      :inputLabel="inputLabel"
+      :modal-identifier="modalIdentifier"
+      :export-default-url="exportDefaultUrl"
+      :post-url="postUrl"/>
   </div>
 </template>
 
@@ -27,6 +31,9 @@ export default {
       type: String,
     },
     postUrl: {
+      type: String,
+    },
+    exportDefaultUrl: {
       type: String,
     }
   },
