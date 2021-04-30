@@ -29,5 +29,6 @@ class AdminUserResource extends Resource
         if ($user->can('users delete admin') && $this->id !== $user->id)
             $fields['links']['destroy'] = route('admin.administradores.destroy', $this->id);
 
+        return $fields;
     }
 }
