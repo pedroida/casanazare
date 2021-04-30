@@ -30,6 +30,7 @@ class SourceController extends Controller
     public function create()
     {
         $source = new Source();
+        $source->name = '';
 
         return view('admin.sources.create', compact('source'));
     }
