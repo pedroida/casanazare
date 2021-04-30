@@ -33,6 +33,31 @@ return [
         'download_credentials' => 'Download Credentials',
         'redirect_url' => 'URL de redirecionamento',
         'identifier' => 'Identificador',
+        'date_of_birth' => 'Data de nascimento',
+        'rg' => 'RG',
+        'phone_one' => 'Telefone 1',
+        'phone_two' => 'Telefone 2',
+        'city-state' => 'Cidade/Estado',
+        'entry_date' => 'Data de entrada',
+        'departure_date' => 'Data de saída',
+        'voluntary' => 'Acolhido',
+        'source' => 'Origem',
+        'responsible' => 'Responsável',
+        'comments' => 'Observações',
+        'type' => 'Tipo',
+        'quantity' => 'Quantidade',
+        'validate' => 'Validade',
+        'unit' => 'Unidade',
+        'category' => 'Categoria',
+        'create_meal' => 'Cadastrar novo dia de refeição',
+
+        \App\Enums\StayTypeEnum::PATIENT => 'Paciente',
+        \App\Enums\StayTypeEnum::COMPANION => 'Acompanhante',
+    ],
+
+    'stays' => [
+        'import_spreadsheet' => 'Importar planilha',
+        'import_spreadsheet_input_label' => 'Selecione ou arraste a planilha',
     ]
 
 ];

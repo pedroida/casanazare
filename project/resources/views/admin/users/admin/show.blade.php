@@ -11,7 +11,7 @@
             @lang('breadcrumb.common.home')
         </breadcrumb-item>
 
-        <breadcrumb-item href="{{ route('admin.admin-users.index') }}">
+        <breadcrumb-item href="{{ route('admin.administradores.index') }}">
             @lang('breadcrumb.users-admin.index')
         </breadcrumb-item>
 
@@ -78,8 +78,8 @@
 
         <div class="card-footer">
             @include('shared.show_buttons', [
-                'urlBack' => route('admin.admin-users.index'),
-                'urlEdit' => route('admin.admin-users.edit', $user->id)
+                'urlBack' => route('admin.administradores.index'),
+                'urlEdit' => route('admin.administradores.edit', $user->id)
             ])
         </div>
     </div>

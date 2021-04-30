@@ -11,7 +11,7 @@
             @lang('breadcrumb.common.home')
         </breadcrumb-item>
 
-        <breadcrumb-item href="{{ route('admin.admin-users.index') }}">
+        <breadcrumb-item href="{{ route('admin.administradores.index') }}">
             @lang('breadcrumb.users-admin.index')
         </breadcrumb-item>
 
@@ -23,13 +23,13 @@
 
 @section('content')
 <div class="card card-secondary">
-    <form class="form-horizontal" method="POST" action="{{ route('admin.admin-users.update', $user->id) }}">
+    <form class="form-horizontal" method="POST" action="{{ route('admin.administradores.update', $user->id) }}">
         @method('PUT')
         <div class="card-body pb-0">
             @include('admin.users.admin._partials.form')
         </div>
         <div class="card-footer">
-            @include('shared.update_buttons', ['urlBack' => route('admin.admin-users.index')])
+            @include('shared.update_buttons', ['urlBack' => route('admin.administradores.index')])
         </div>
     </form>
 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Enums\UserRolesEnum;
+use App\Exceptions\SelfDeleteException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AdminUserRequest;
 use App\Http\Resources\Admin\AdminUserResource;
@@ -41,7 +42,7 @@ class AdminUserController extends Controller
         $user->assignRole(UserRolesEnum::ADMIN);
 
         $message = _m('common.success.create');
-        return $this->chooseReturn('success', $message, 'admin.admin-users.edit', $user->id);
+        return $this->chooseReturn('success', $message, 'admin.administradores.edit', $user->id);
     }
 
     public function edit($id)
@@ -58,7 +59,7 @@ class AdminUserController extends Controller
         $this->repository->updateUser($user, $userData);
 
         $message = _m('common.success.update');
-        return $this->chooseReturn('success', $message, 'admin.admin-users.edit', $id);
+        return $this->chooseReturn('success', $message, 'admin.administradores.edit', $id);
     }
 
     public function show($id)
@@ -74,6 +75,8 @@ class AdminUserController extends Controller
         try {
             $this->repository->delete($user);
             return $this->chooseReturn('success', _m('common.success.destroy'));
+        } catch (SelfDeleteException $e) {
+            return $this->chooseReturn('error', _m('admin.error.self_delete'));
         } catch (\Exception $e) {
             return $this->chooseReturn('error', _m('common.error.destroy'));
         }

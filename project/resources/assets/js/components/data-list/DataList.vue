@@ -37,15 +37,29 @@ export default {
       default() {
         return "Tem certeza que deseja apagar este registro?";
       }
-    }
+    },
+
+    confirmTitle: {
+      type: String,
+      default() {
+        return "Tem certeza que deseja prosseguir?";
+      }
+    },
+
+    confirmMessage: {
+      type: String,
+      default() {
+        return "Tem certeza que realizar esta ação?";
+      }
+    },
   },
 
   watch: {
-    query: _.debounce(function(text) {
+    query: _.debounce(function (text) {
       this.currentPage = 1;
     }, 300),
 
-    fetch_url: _.debounce(function(text) {
+    fetch_url: _.debounce(function (text) {
       this.fetchData();
     }, 200)
   },
@@ -67,7 +81,7 @@ export default {
       query_params += "&field=" + this.field;
       query_params += "&order=" + this.sortIcon.order;
 
-      _.forEach(this.filterType, function(value, key) {
+      _.forEach(this.filterType, function (value, key) {
         if (
           value !== "undefined" &&
           value !== null &&
@@ -106,7 +120,7 @@ export default {
     }
   },
 
-  data: function() {
+  data() {
     return {
       items: [],
       filters: {
@@ -128,8 +142,9 @@ export default {
   },
 
   mounted() {
+    this.$root.$emit('DataListPresent')
     this.sortIcon.setArrow();
-    this.listenFilters();
+    this.listenEvents();
     this.fetchData().then(() => {
       if (!!window.__FILTER__) {
         this.filterType = window.__FILTER__;
@@ -166,15 +181,17 @@ export default {
       this.definePaginationButtons();
       this.updateTotal(response.data);
       this.$root.$emit("stop-loading");
-      this.$nextTick().then(function() {
+      this.$nextTick().then(function () {
         $('[data-toggle="popover"]').popover();
       });
     },
 
-    listenFilters() {
+    listenEvents() {
       this.$on("setFilter", payload => {
         this.setFilter(payload.urlKey, payload.value);
       });
+
+      this.$root.$on("SearchTerm", payload => this.query = payload);
     },
 
     fetchPrevPage() {
@@ -214,18 +231,18 @@ export default {
       if (endPage > totalPages) endPage = totalPages;
 
       if (startPage > 1) {
-        buttons.push({ disabled: false, page: 1, text: "1" });
-        buttons.push({ disabled: true, page: 0, text: "..." });
+        buttons.push({disabled: false, page: 1, text: "1"});
+        buttons.push({disabled: true, page: 0, text: "..."});
       }
 
       for (let i = startPage; i <= endPage; i++) {
         const active = i == this.currentPage;
-        buttons.push({ disabled: false, page: i, text: i, active: active });
+        buttons.push({disabled: false, page: i, text: i, active: active});
       }
 
       if (endPage < totalPages) {
-        buttons.push({ disabled: true, page: 0, text: "..." });
-        buttons.push({ disabled: false, page: totalPages, text: totalPages });
+        buttons.push({disabled: true, page: 0, text: "..."});
+        buttons.push({disabled: false, page: totalPages, text: totalPages});
       }
 
       this.paginationButtons = buttons;
@@ -262,7 +279,36 @@ export default {
           type: "error",
           title: message
         });
-    });
+      });
+    },
+
+    handleAction(link) {
+      axios.post(link).then(response => {
+        const status = response.data;
+        this.$swal({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          type: status.type,
+          title: status.message
+        });
+        this.fetchData();
+      }).catch(error => {
+        let message = "Não foi possível realizar a ação.";
+        if (error.response.status === 403) {
+          message = "Você não possuí permissões para realizar esta ação.";
+        }
+
+        this.$swal({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          type: "error",
+          title: message
+        });
+      });
     },
 
     confirmDelete(link, title = undefined, message = undefined) {
@@ -290,11 +336,38 @@ export default {
       });
     },
 
+    confirm(link, title = undefined, message = undefined) {
+      if (title == undefined) {
+        title = this.confirmTitle;
+      }
+
+      if (message == undefined) {
+        message = this.confirmMessage;
+      }
+
+      this.$swal({
+        title: title,
+        html: message,
+        type: "question",
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: "Sim",
+        cancelButtonText: "Fechar"
+      }).then(result => {
+        if (result.value) {
+          this.handleAction(link);
+        }
+      });
+    },
+
     updateTotal(data) {
       this.count.totalRegistries = data.meta.total;
     },
 
     listenLoadingEvents() {
+      this.$root.$on('reload-data', () => this.fetchData());
+
       this.$root.$on("start-loading", () => {
         this.isLoading = true;
       });

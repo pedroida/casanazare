@@ -11,7 +11,7 @@ class Where extends Criteria
     private $operator;
     private $field;
 
-    public function __construct($field, $operator, $values = null)
+    public function __construct($field, $operator = null, $values = null)
     {
         $this->values = $values;
         $this->operator = $operator;
@@ -20,6 +20,9 @@ class Where extends Criteria
 
     public function apply($queryBuilder, Repository $repository)
     {
+        if(!is_string($this->field))
+            return $queryBuilder->where($this->field);
+
         return ($this->values)
             ? $queryBuilder->where($this->field, $this->operator, $this->values)
             : $queryBuilder->where($this->field, $this->operator);

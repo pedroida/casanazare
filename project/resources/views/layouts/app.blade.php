@@ -23,7 +23,7 @@
   @yield('head')
 </head>
 
-<body class="sidebar-mini">
+<body>
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <!-- Navbar -->
@@ -31,6 +31,8 @@
 
       <!-- Sidebar -->
       @include('layouts._partials.sidebar.sidebar')
+
+      @yield('modal-section')
 
       <!-- Main Content -->
       <div class="main-content">
@@ -72,5 +74,7 @@
   <!-- Page Specific JS File -->
   @stack('page_specific_scripts')
 </body>
+
+@yield('scripts')
 
 </html>

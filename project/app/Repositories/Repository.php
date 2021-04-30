@@ -126,6 +126,15 @@ abstract class Repository implements CriteriaContract
             ->addSelect($columns);
     }
 
+    public function simpleFindBy($field, $value)
+    {
+        $this->resetQuery();
+        $this->applyCriteria();
+        return $this->model
+            ->where($field, $value)
+            ->get();
+    }
+
     public function whereIn(string $field, array $values, array $columns = ['*'])
     {
         $this->resetQuery();

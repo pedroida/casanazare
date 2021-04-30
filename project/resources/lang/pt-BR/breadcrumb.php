@@ -14,8 +14,41 @@ return [
         'index' => 'Usuários Administradores'
     ],
 
-    'users-client' => [
+    'users-voluntary' => [
         'index' => 'Usuários Clientes'
+    ],
+
+    'users-voluntary' => [
+        'index' => 'Usuários Voluntários'
+    ],
+
+    'sources' => [
+        'index' => 'Origens'
+    ],
+
+    'donations' => [
+        'index' => 'Doações'
+    ],
+
+    'categories' => [
+        'index' => 'Categorias'
+    ],
+
+    'units' => [
+        'index' => 'Unidades'
+    ],
+
+    'meals' => [
+        'index' => 'Refeições',
+    ],
+
+    'clients' => [
+        'index' => 'Acolhidos',
+        'forbidden_index' => 'Acolhidos proibidos',
+    ],
+
+    'stays' => [
+        'index' => 'Estadias',
     ],
 
     'profile' => [

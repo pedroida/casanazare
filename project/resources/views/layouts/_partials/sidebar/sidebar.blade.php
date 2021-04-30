@@ -7,11 +7,13 @@
     </div>
 
     <div class="sidebar-brand sidebar-brand-sm">
-      <a href="{{ route('home') }}">Base</a>
+      <a href="{{ route('home') }}">CASA</a>
     </div>
 
     @if(current_user()->hasRole(\App\Enums\UserRolesEnum::ADMIN))
       @include('layouts._partials.sidebar._partials.admin')
+    @elseif(current_user()->hasRole(\App\Enums\UserRolesEnum::VOLUNTARY))
+      @include('layouts._partials.sidebar._partials.voluntary')
     @elseif(current_user()->hasRole(\App\Enums\UserRolesEnum::CLIENT))
       @include('layouts._partials.sidebar._partials.client')
     @endif

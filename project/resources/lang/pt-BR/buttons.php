@@ -9,6 +9,8 @@ return [
         'destroy' => 'Excluir',
         'save' => 'Salvar',
         'access' => 'Acessar',
+        'forbid' => 'Proibir',
+        'allow' => 'Permitir',
     ],
 
     'auth' => [

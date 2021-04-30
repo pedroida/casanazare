@@ -1,5 +1,5 @@
 <div class="invalid-feedback">
-    @if ($errors->has($field))
+    @if (isset($errors) && $errors->has($field))
         {{ $errors->first($field) }}
     @elseif ($required)
         Campo obrigatório!

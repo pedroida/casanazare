@@ -9,6 +9,7 @@ return [
         'state' => '-- Selecione um estado --',
         'phone' => '(99) 9999-9999',
         'cep' => '00000-000',
+        'rg' => '00.000.000-0',
         'date' => '00/00/0000',
         'title' => 'Digite o título',
         'body' => 'Digite o conteúdo',
@@ -26,6 +27,25 @@ return [
         'password' => 'Digite a senha',
         'new_password' => 'Digite a nova senha',
         'password_confirmation' => 'Confirme a senha',
-    ]
+    ],
 
+    'sources' => [
+        'name' => 'Nome do lugar',
+    ],
+
+    'donations' => [
+        'name' => 'Nome do item doado',
+        'quantity' => 'Quantidade doada',
+        'validate' => 'Validade do item',
+        'category' => 'Categoria do item',
+        'unit' => 'Unidade do item',
+    ],
+
+    'categories' => [
+        'name' => 'Nome da categoria',
+    ],
+
+    'units' => [
+        'name' => 'Nome da unidade',
+    ],
 ];

@@ -18,9 +18,27 @@ return [
         ],
     ],
 
+    'admin' => [
+        'error' => [
+            'self_delete' => 'Não é possível remover o usuário corrente.'
+        ]
+    ],
+
     'auth' => [
         'success' => [
             'reset_password' => 'Nova senha cadastrada com sucesso!',
+        ]
+    ],
+
+    'client' => [
+        'error' => [
+            'has_stay' => 'O acolhido ainda possui hospedagem em aberto',
+        ]
+    ],
+
+    'stays' => [
+        'import' => [
+            'success' => 'A importação está sendo realizada em segundo plano'
         ]
     ]
 

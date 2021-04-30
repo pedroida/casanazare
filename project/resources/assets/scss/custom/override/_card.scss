@@ -2,4 +2,9 @@
   .card-header {
     min-height: 50px;
   }
+
+  &-hover:hover {
+    box-shadow: 9px -6px 8px rgba(0, 0, 0, 0.13);
+    transform: translate(1px, -1px);
+  }
 }

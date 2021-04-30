@@ -7,7 +7,7 @@ return [
 
     'profile' => [
         'edit admin',
-        'edit client',
+        'edit voluntary',
     ],
 
     'users' => [
@@ -16,10 +16,63 @@ return [
         'show admin',
         'list admin',
         'delete admin',
-        'create client',
-        'edit client',
-        'show client',
-        'list client',
-        'delete client',
+        'create voluntary',
+        'edit voluntary',
+        'show voluntary',
+        'list voluntary',
+        'delete voluntary',
+    ],
+
+    'clients' => [
+        'create',
+        'edit',
+        'show',
+        'list',
+        'delete',
+        'forbid',
+        'allow',
+    ],
+
+    'sources' => [
+        'create',
+        'edit',
+        'list',
+        'delete',
+    ],
+
+    'stays' => [
+        'create',
+        'edit',
+        'list',
+        'delete',
+        'import',
+    ],
+
+    'meals' => [
+        'create',
+        'edit',
+        'list',
+        'delete',
+    ],
+
+    'donations' => [
+        'create',
+        'edit',
+        'list',
+        'delete',
+    ],
+
+    'categories' => [
+        'create',
+        'edit',
+        'list',
+        'delete',
+    ],
+
+    'units' => [
+        'create',
+        'edit',
+        'list',
+        'delete',
     ],
 ];

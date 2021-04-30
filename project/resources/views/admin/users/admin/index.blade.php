@@ -22,7 +22,7 @@
     <data-list
         data-source="{{ route('admin.pagination.admin-users') }}"
         delete-message="@lang('flash.common.confirmation.destroy')"
-        url-create="{{ route('admin.admin-users.create') }}"
+        url-create="{{ route('admin.administradores.create') }}"
         label-create="@lang('links.common.create')"
     />
 
@@ -30,18 +30,14 @@
         <div>
             <loader :show-loader="isLoading"></loader>
             <div class="card">
-                <div class="card-header p-2">
-                    @include('admin.users._partials.tabs')
-                </div>
                 <div class="card-header">
-                    <input type="text" v-model="query"
-                        class="form-control col-md-4 mb-2 mb-md-0"
-                        placeholder="@lang('placeholders.common.search')">
-
+                    <div class="col-md-6 col-12">
+                        @include('admin.users._partials.tabs')
+                    </div>
                     @can('users create admin')
-                        <div class="col-md-4 offset-md-4 text-right">
+                        <div class="col-md-6 col-12 text-right">
                             <a v-if="urlCreate"
-                                class="btn btn-success" :href="urlCreate" data-toggle="tooltip" :title="labelCreate">
+                               class="btn btn-success" :href="urlCreate" data-toggle="tooltip" :title="labelCreate">
                                 <i class="fas fa-plus fa-fw"></i>
                                 @{{ labelCreate }}
                             </a>
@@ -65,6 +61,7 @@
                                 </template>
                             </tbody>
                         </table>
+                        @include('shared.pagination')
                     </div>
                 </div>
             </div>

@@ -2,6 +2,7 @@
   border: 2px dashed color(primary);
   min-height: 240px;
   text-align: center;
+  display: flex;
   .dz-message {
     font-size: 24px;
     color: color(fontdark);
@@ -14,6 +15,14 @@
   	.dz-image {
   		border-radius: 3px;
   	}
+  }
+
+  &.dz-clickable {
+    cursor: pointer;
+  }
+
+  .dz-default.dz-message {
+    margin: auto;
   }
 }
 

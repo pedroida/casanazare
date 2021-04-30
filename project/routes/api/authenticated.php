@@ -2,7 +2,7 @@
 
 /**
  * Authenticated routes for Api
- * Prefix 'api/v1/client', middleware 'auth:api'
+ * Prefix 'api/v1/voluntary', middleware 'auth:api'
  * Namespace 'App\Http\Controllers\Api
  */
 

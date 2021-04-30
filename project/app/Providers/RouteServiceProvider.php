@@ -37,11 +37,6 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
         $this->mapWebRoutes();
-
-        Route::post('/oauth/token', [
-            'uses' => '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken',
-            'middleware' => 'throttle:60,5',
-        ]);
     }
 
     /**
@@ -59,15 +54,15 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapAuthenticatedWebRoutes();
         $this->mapAdminAuthenticatedWebRoutes();
-        $this->mapClientAuthenticatedWebRoutes();
+        $this->mapVoluntaryAuthenticatedWebRoutes();
 
         $this->mapPaginationRoutes();
         $this->mapAdminPaginationRoutes();
-        $this->mapClientPaginationRoutes();
+        $this->mapVoluntaryPaginationRoutes();
 
         $this->mapAjaxRoutes();
         $this->mapAdminAjaxRoutes();
-        $this->mapClientAjaxRoutes();
+        $this->mapVoluntaryAjaxRoutes();
     }
 
     protected function mapDefaultWebRoutes()
@@ -91,11 +86,11 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/web/admin/unauthenticated.php'));
     }
 
-    protected function mapClientUnauthenticatedWebRoutes()
+    protected function mapVoluntaryUnauthenticatedWebRoutes()
     {
         Route::middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/web/client/unauthenticated.php'));
+            ->group(base_path('routes/web/voluntary/unauthenticated.php'));
     }
 
     protected function mapAuthenticatedWebRoutes()
@@ -114,13 +109,13 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/web/admin/authenticated.php'));
     }
 
-    protected function mapClientAuthenticatedWebRoutes()
+    protected function mapVoluntaryAuthenticatedWebRoutes()
     {
-        Route::middleware(['web', 'auth', 'verified', 'user-type:' . UserRolesEnum::CLIENT])
-            ->namespace($this->namespace . '\Client')
-            ->name('client.')
-            ->prefix('client')
-            ->group(base_path('routes/web/client/authenticated.php'));
+        Route::middleware(['web', 'auth', 'verified', 'user-type:' . UserRolesEnum::VOLUNTARY])
+            ->namespace($this->namespace . '\Voluntary')
+            ->name('voluntary.')
+            ->prefix('voluntario')
+            ->group(base_path('routes/web/voluntary/authenticated.php'));
     }
 
     protected function mapPaginationRoutes()
@@ -140,13 +135,13 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/web/admin/pagination.php'));
     }
 
-    protected function mapClientPaginationRoutes()
+    protected function mapVoluntaryPaginationRoutes()
     {
-        Route::middleware(['web', 'auth', 'user-type:' . UserRolesEnum::CLIENT])
-            ->namespace($this->namespace . '\Client')
-            ->prefix('pagination/client')
-            ->name('client.pagination.')
-            ->group(base_path('routes/web/client/pagination.php'));
+        Route::middleware(['web', 'auth', 'user-type:' . UserRolesEnum::VOLUNTARY])
+            ->namespace($this->namespace . '\Voluntary')
+            ->prefix('pagination/voluntary')
+            ->name('voluntary.pagination.')
+            ->group(base_path('routes/web/voluntary/pagination.php'));
     }
 
     protected function mapAjaxRoutes()
@@ -166,13 +161,13 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/web/admin/ajax.php'));
     }
 
-    protected function mapClientAjaxRoutes()
+    protected function mapVoluntaryAjaxRoutes()
     {
-        Route::middleware(['web', 'auth', 'user-type:' . UserRolesEnum::CLIENT])
-            ->namespace($this->namespace . '\Client')
-            ->prefix('ajax/client')
-            ->name('ajax.client.')
-            ->group(base_path('routes/web/client/ajax.php'));
+        Route::middleware(['web', 'auth', 'user-type:' . UserRolesEnum::VOLUNTARY])
+            ->namespace($this->namespace . '\Voluntary')
+            ->prefix('ajax/voluntary')
+            ->name('ajax.voluntary.')
+            ->group(base_path('routes/web/voluntary/ajax.php'));
     }
 
     /**

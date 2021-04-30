@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\SelfDeleteException;
 use App\Models\User;
 
 class UserRepository extends Repository
@@ -40,5 +41,15 @@ class UserRepository extends Repository
         }
 
         return $data;
+    }
+
+    public function delete($user)
+    {
+        $currentUSer = current_user();
+
+        if($currentUSer && $user->id == $currentUSer->id)
+            throw new SelfDeleteException();
+
+        return parent::delete($user);
     }
 }

@@ -87,7 +87,7 @@ class Handler extends ExceptionHandler
                 return redirect()->back();
             }
 
-            if ($exception instanceof QueryException) {
+            if (in_production() && $exception instanceof QueryException) {
                 if ($request->wantsJson()) {
                     return response()->json([
                         'error' => 'Internal Server Error.'
