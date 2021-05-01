@@ -17,9 +17,10 @@
 ```sh
 cd project
 composer install
-cp .env.example .env #configurar conexão do banco
+cp .env.example .env #configurar conexão do banco e serviço de email
 php artisan key:generate
 php artisan storage:link
+php artisan config:clear
 php artisan migrate
 php artisan db:seed
 php artisan upgrade --yes
