@@ -7,7 +7,7 @@
     </div>
 
     <div class="sidebar-brand sidebar-brand-sm">
-      <a href="{{ route('home') }}">CASA</a>
+      <a href="{{ route('home') }}"><img src="/assets/img/favicon.ico" alt=""></a>
     </div>
 
     @if(current_user()->hasRole(\App\Enums\UserRolesEnum::ADMIN))
