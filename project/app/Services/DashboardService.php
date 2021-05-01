@@ -141,7 +141,7 @@ class DashboardService
             ->groupBy
             ->month
             ->each(function ($stays, $entryDate) use (&$labels, &$data, &$colors, &$borderColors) {
-                $labels[] = Carbon::createFromFormat('Y-m-d', $entryDate)->formatLocalized('%B');
+                $labels[] = Carbon::createFromFormat('Y-m-d', $entryDate)->translatedFormat('F');
                 $data[] = $stays->first()->total;
                 $rgb = $this->randomRgb();
                 $colors[] = "rgba({$rgb},0.5)";

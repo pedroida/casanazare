@@ -18,7 +18,7 @@ class MealResource extends Resource
             'breakfasts' => $this->breakfasts,
             'day_formatted' => format_date($this->day, 'd/m/Y'),
             'day' => format_date($this->day, 'Y,m,d'),
-            'week_day' => Carbon::parse($this->day)->formatLocalized('%A'),
+            'week_day' => Carbon::parse($this->day)->translatedFormat('l'),
             'created_at' => format_date($this->created_at),
             'links' => [
                 'edit' => $this->when(
