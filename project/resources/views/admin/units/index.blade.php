@@ -4,7 +4,7 @@
 @section('page-header')
     <h1>
         <i class="fas fa-building fa-fw mr-2 text-muted"></i>
-        @lang('headings.units111111.index')
+        @lang('headings.units.index')
     </h1>
 
     <breadcrumb>
