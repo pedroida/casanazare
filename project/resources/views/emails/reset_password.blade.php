@@ -13,7 +13,7 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
                 <tr>
                     <td align="center">
-                        <a href="{{  $url }}" class="f-fallback button button--green" target="_blank">Resetar seu password</a>
+                        <a href="{{  $url }}" class="f-fallback button button--green" target="_blank">Redefinir senha</a>
                     </td>
                 </tr>
             </table>
